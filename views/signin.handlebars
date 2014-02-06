@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CriSee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/signin.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <img src="http://lorempixel.com/500/300/nature" class="img-responsive img-rounded"/>
+
+      <form id="loginForm" role="form" method="get" action="/">
+        <div class="form-group">
+          <label for="username">Username:</label>
+          <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" class="form-control" id="password" placeholder="Don't actually put a password here">
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="remember" value="Remember me"></input>
+          <label for="remember">Remember me</label>
+        </div>
+        <div class="form-group">
+          <input type="hidden" name="auth" value="true"/>
+        </div>
+        <input type="submit" id="submitBtn" class="btn btn-default" value="Sign in"></input>
+      </form>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/signin.js"></script>
+  </body>
+</html>

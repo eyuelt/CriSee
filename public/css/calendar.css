@@ -1,0 +1,43 @@
+.calendar table {
+  border: 3px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  font-family: Tahoma, Helvetica, Arial, sans-serif;
+  margin: 30px;
+}
+
+.calendar td {
+  padding: 5px;
+  border: 1px dotted black;
+  min-width: 20px;
+}
+
+.calendar .mainHeader td {
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.calendar .mainHeader a {
+  text-decoration: none;
+  font-size: 120%;
+}
+
+.calendar .subHeader td {
+  text-decoration: underline;
+  border: 1px solid black;
+  border-bottom: 3px solid black;
+}
+
+.calendar tr .thisMonth {
+  color: black;
+}
+
+.calendar tr .thisMonth:hover {
+  font-weight: bold;
+  background-color: #EEE;
+  border: 1px solid black;
+}
+
+.calendar tr .otherMonth {
+  color: #BBB;
+}

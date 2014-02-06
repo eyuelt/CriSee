@@ -4,6 +4,10 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var index = require('./routes/index');
+var signin = require('./routes/signin');
+var error = require('./routes/error');
+var calendar = require('./routes/calendar');
+var help = require('./routes/help');
 
 var app = express();
 
@@ -27,6 +31,12 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
+app.get('/signin', signin.view);
+app.get('/calendar', calendar.view);
+app.get('/help', help.view);
+// not yet implemented
+app.get('/reminders', error.notCreated);
+app.get('/settings', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
