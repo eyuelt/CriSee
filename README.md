@@ -6,3 +6,4 @@ CriSee
 Team Members:
 -------------
 Eyuel Tessema
+Nishant "big hype" Jacob
