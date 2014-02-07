@@ -2,6 +2,19 @@ body {
   background-color: #24D9FF;
 }
 
+#dayview {
+  display: none;
+}
+
+#addeventbutton {
+  display: block;
+  padding: 8px;
+  background-color: #126C7F;
+  width: 100%;
+  border: 3px solid black;
+  color: #20C3E5;
+}
+
 .calendar tr {
   background-color: #FFFFFF;
 }
@@ -40,12 +53,6 @@ body {
 
 .calendar tr .thisMonth {
   color: black;
-}
-
-.calendar tr .thisMonth:hover {
-  font-weight: bold;
-  background-color: #EEE;
-  border: 1px solid black;
 }
 
 .calendar tr .otherMonth {

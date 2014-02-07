@@ -19,6 +19,10 @@
       <div class="container">
 
         <div id="cal"></div>
+        <div id="dayview">
+          <p>No events listed</p>
+          <a id="addeventbutton" href="/addevent">Add Event</a>
+        </div>
 
       </div>
     </center>
@@ -29,8 +33,20 @@
 
     <script type="text/javascript" src="js/Calendar.js"></script>
     <script type="text/javascript">
-      var cal1 = new Calendar("cal");
-      cal1.render(new Date());
+      var cal = new Calendar("cal");
+      cal.render(new Date());
+
+      var selected;
+      $('.calendar td').click(function(e) {
+          if (selected !== undefined) {
+            selected.style.backgroundColor = "";
+            selected.style.border = "";
+          }
+          selected = this;
+          this.style.backgroundColor = "#EEE";
+          this.style.border = "1px solid black";
+          $('#dayview').show();
+      });
     </script>
   </body>
 </html>
