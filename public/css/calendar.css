@@ -1,9 +1,19 @@
+body {
+  background-color: #24D9FF;
+}
+
+.calendar tr {
+  background-color: #FFFFFF;
+}
+
 .calendar table {
   border: 3px solid black;
   border-collapse: collapse;
   text-align: center;
   font-family: Tahoma, Helvetica, Arial, sans-serif;
-  margin: 30px;
+  margin: 30px 0px;
+  width: 100%;
+  height: 300px;
 }
 
 .calendar td {
