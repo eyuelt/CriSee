@@ -15,6 +15,9 @@ Calendar.prototype.render = function(date) {
   this.createMainHeader(table);
   this.createSubHeader(table);
   this.createCalendar(table);
+
+  addThisMonthListeners();
+  addNavigatorListeners();
 };
 
 
@@ -41,6 +44,7 @@ Calendar.prototype.createMainHeader = function(table) {
     obj.render(new Date(obj.date.getFullYear(), obj.date.getMonth()-1));
   };
   left.appendChild(leftArrow);
+  left.className = "navigator";
 
   middle.setAttribute("colspan", 5);
   var title = this.months[this.date.getMonth()] + " " + this.date.getFullYear();
@@ -53,6 +57,7 @@ Calendar.prototype.createMainHeader = function(table) {
     obj.render(new Date(obj.date.getFullYear(), obj.date.getMonth()+1));
   };
   right.appendChild(rightArrow);
+  right.className = "navigator";
 };
 
 
@@ -86,3 +91,23 @@ Calendar.prototype.createCalendar = function(table) {
     }
   } while (date.getMonth() === month)
 };
+
+var selected;
+function addThisMonthListeners() {
+  $('.calendar td.thisMonth').click(function(e) {
+    if (selected !== undefined) {
+      selected.style.backgroundColor = "";
+      selected.style.border = "";
+    }
+    selected = this;
+    this.style.backgroundColor = "#EEE";
+    this.style.border = "1px solid black";
+    $('#dayview').show();
+  });
+}
+
+function addNavigatorListeners() {
+  $('.calendar td.navigator').click(function(e) {
+    $('#dayview').hide();
+  });
+}
