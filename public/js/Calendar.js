@@ -107,7 +107,7 @@ function addThisMonthListeners() {
 }
 
 function addNavigatorListeners() {
-  $('.calendar td.navigator').click(function(e) {
+  $('.calendar td.navigator a').click(function(e) {
     $('#dayview').hide();
   });
 }
