@@ -1,14 +1,18 @@
 body {
 	font-size: 20px;
-	background-color: #F0FFF0;
+	background-color: #24D9FF;
 }
 a {
+	color: #20C3E5;
+	display: block;
+	width: 150px;
 	padding: 5px;
-	border: 2px solid gray;
-	background: white;
+	border: 2px #126C7F ;
+	border-radius:25px;
+	background: #126C7F;
 }
 
 b {
-	color: red;
+	color: #FF8A24;
 }
 
