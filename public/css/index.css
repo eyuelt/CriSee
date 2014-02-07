@@ -1,8 +1,12 @@
 body {
-  font-size: 20px;
   background-color: #24D9FF;
 }
-a {
+
+.container {
+  font-size: 20px;
+}
+
+.container a {
   color: #20C3E5;
   display: block;
   width: 150px;
@@ -16,7 +20,10 @@ b {
   color: #FF8A24;
 }
 
-a:visited, a:link, a:hover, a:active {
+.container a:visited,
+.container a:link,
+.container a:hover,
+.container a:active {
   color: #20C3E5;
   text-decoration: none;
 }
