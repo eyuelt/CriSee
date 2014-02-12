@@ -1,0 +1,15 @@
+.listview table {
+  width: 100%;
+  border: 3px solid black;
+  border-collapse: collapse;
+  margin: 30px 0px 10px 0px;
+}
+
+.listview tr {
+  background-color: #FFFFFF;
+  border: 1px solid black;
+}
+
+.listview-elem {
+  padding: 10px;
+}

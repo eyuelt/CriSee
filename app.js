@@ -32,7 +32,8 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/signin', signin.view);
-app.get('/calendar', calendar.view);
+app.get('/calendar', index.calendarview);
+app.get('/list', index.listview);
 app.get('/help', help.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);

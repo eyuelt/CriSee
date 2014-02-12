@@ -1,30 +1,14 @@
 body {
   background-color: #24D9FF;
+  padding-top: 50px;
 }
 
-.container {
-  font-size: 20px;
+nav.navbar {
+  min-height: 50px;
+  height: 50px;
 }
 
-.container a {
-  color: #20C3E5;
-  display: block;
-  width: 150px;
-  padding: 5px;
-  border: 2px #126C7F ;
-  border-radius:25px;
-  background: #126C7F;
+nav.navbar .navbar-header,
+nav.navbar .navbar-header a {
+  height: 50px;
 }
-
-b {
-  color: #FF8A24;
-}
-
-.container a:visited,
-.container a:link,
-.container a:hover,
-.container a:active {
-  color: #20C3E5;
-  text-decoration: none;
-}
-
