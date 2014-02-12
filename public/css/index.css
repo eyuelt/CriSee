@@ -1,6 +1,7 @@
 body {
   background-color: #24D9FF;
   padding-top: 50px;
+  padding-bottom: 45px;
 }
 
 nav.navbar {
@@ -11,4 +12,18 @@ nav.navbar {
 nav.navbar .navbar-header,
 nav.navbar .navbar-header a {
   height: 50px;
+}
+
+#more-btn {
+  font-size: 160%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  float:right;
+  background-color: white;
+  margin: 5px 25px;
 }

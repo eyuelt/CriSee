@@ -13,3 +13,21 @@
 .listview-elem {
   padding: 10px;
 }
+
+#more-btn {
+  font-size: 160%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  float:right;
+  background-color: white;
+  margin: 5px 25px;
+}
+
+body {
+  padding-bottom: 45px;
+}
