@@ -34,6 +34,7 @@ if ('development' == app.get('env')) {
 app.get('/', index.view);
 app.get('/signin', signin.view);
 app.post('/signin', signin.login);
+app.get('/logout', signin.logout);
 app.get('/calendar', calendar.view);
 app.get('/help', help.view);
 // not yet implemented

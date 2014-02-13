@@ -13,6 +13,11 @@ exports.login = function(req, res) {
   }
 };
 
+exports.logout = function(req, res) {
+  res.clearCookie('username');
+  res.redirect('/');
+};
+
 var users = require('../users.json');
 
 function isValidLogin(username, password) {
