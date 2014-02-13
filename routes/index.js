@@ -1,6 +1,6 @@
 exports.view = function(req, res) {
-  if (req.query.auth === "true") {
-    res.render('index', {"username":req.query.username});
+  if (req.cookies.username) {
+    res.render('index', {"username":req.body.username});
   } else {
     res.redirect('/signin');
   }

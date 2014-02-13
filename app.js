@@ -21,6 +21,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,12 +33,15 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/signin', signin.view);
+app.post('/signin', signin.login);
+app.get('/logout', signin.logout);
 app.get('/calendar', calendar.view);
 app.get('/help', help.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);
 app.get('/settings', error.notCreated);
 app.get('/addevent', error.notCreated);
+app.get('/signup', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
