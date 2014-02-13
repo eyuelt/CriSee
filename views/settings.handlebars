@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CriSee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/settings.css" rel="stylesheet">
+  </head>
+  <body>
+    <center>
+
+      <div class="container">
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <h1> Settings </h1>
+      </nav>
+
+      <ul class="list-group">
+        <li class="list-group-item"> 
+          <span class="glyphicon glyphicon-envelope"></span> Email          
+          <form> 
+            <input type="text" name="email"><br>
+          </form>
+        </li>
+        <li class="list-group-item"> 
+          <span class="glyphicon glyphicon-earphone"></span> Phone        
+          <form>
+           <input type="text" name="phone"><br>
+          </form>
+        </li>
+      </ul>
+
+      <ul class="list-group">
+        <li class="list-group-item">
+        <span class="glyphicon glyphicon-bullhorn"></span> Reminders
+        </li>
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+              <div class="onoffswitch-inner"></div>
+              <div class="onoffswitch-switch"></div>
+          </label>
+        </div>
+
+      </ul>
+
+      </div>
+    </center>
+
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
