@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CriSee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/listview.css" rel="stylesheet">
+  </head>
+  <body>
+    <!-- header -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" role="button" href="/calendar">
+            <span class="glyphicon glyphicon-calendar"></span> Calendar View
+          </a>
+          <a class="btn btn-default active" role="button" href="/list">
+            <span class="glyphicon glyphicon-list"></span> List View
+          </a>
+        </div>
+      </div>
+    </div>
+    </nav>
+    <!-- footer -->
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="btn-group btn-group-justified">
+          <a class="btn btn-default" role="button" href="/search">
+            <span class="glyphicon glyphicon-search"></span>
+          </a>
+          <a class="btn btn-default" role="button" href="/help">
+            <span class="glyphicon glyphicon-question-sign"></span>
+          </a>
+          <a class="btn btn-default" role="button" href="/settings">
+            <span class="glyphicon glyphicon-cog"></span>
+          </a>
+          <a class="btn btn-default" role="button" href="/logout">
+            <span class="glyphicon glyphicon-off"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    </nav>
+
+
+    <div class="container">
+      <div class="listview">
+        <table>
+          <tr>
+            <th class="listview-elem">
+              Add Event...
+            </th>
+          </tr>
+          {{#each events}}
+          <tr>
+            <td class="listview-elem">
+              {{description}}
+            </td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>

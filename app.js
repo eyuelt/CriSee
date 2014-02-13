@@ -8,6 +8,7 @@ var signin = require('./routes/signin');
 var error = require('./routes/error');
 var calendar = require('./routes/calendar');
 var help = require('./routes/help');
+var settings = require('./routes/settings');
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
+app.use(express.cookieParser());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -32,12 +34,17 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/signin', signin.view);
-app.get('/calendar', calendar.view);
+app.post('/signin', signin.login);
+app.get('/logout', signin.logout);
+app.get('/calendar', index.calendarview);
+app.get('/list', index.listview);
 app.get('/help', help.view);
+app.get('/settings', settings.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);
-app.get('/settings', error.notCreated);
 app.get('/addevent', error.notCreated);
+app.get('/signup', error.notCreated);
+app.get('/search', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
