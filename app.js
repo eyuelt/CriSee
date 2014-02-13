@@ -44,6 +44,7 @@ app.get('/settings', settings.view);
 app.get('/reminders', error.notCreated);
 app.get('/addevent', error.notCreated);
 app.get('/signup', error.notCreated);
+app.get('/search', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

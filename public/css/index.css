@@ -4,14 +4,24 @@ body {
   padding-bottom: 45px;
 }
 
-nav.navbar {
+nav.navbar-fixed-top {
   min-height: 50px;
   height: 50px;
 }
 
-nav.navbar .navbar-header,
-nav.navbar .navbar-header a {
+nav.navbar-fixed-top .navbar-header,
+nav.navbar-fixed-top .navbar-header a {
   height: 50px;
+}
+
+nav.navbar-fixed-bottom {
+  min-height: 30px;
+  height: 30px;
+}
+
+nav.navbar-fixed-bottom .navbar-header,
+nav.navbar-fixed-bottom .navbar-header a {
+  height: 30px;
 }
 
 #more-btn {
