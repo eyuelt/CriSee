@@ -8,6 +8,7 @@ var signin = require('./routes/signin');
 var error = require('./routes/error');
 var calendar = require('./routes/calendar');
 var help = require('./routes/help');
+var settings = require('./routes/settings');
 
 var app = express();
 
@@ -37,9 +38,9 @@ app.post('/signin', signin.login);
 app.get('/logout', signin.logout);
 app.get('/calendar', calendar.view);
 app.get('/help', help.view);
+app.get('/settings', settings.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);
-app.get('/settings', error.notCreated);
 app.get('/addevent', error.notCreated);
 app.get('/signup', error.notCreated);
 
