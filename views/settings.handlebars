@@ -34,18 +34,26 @@
       </ul>
 
       <ul class="list-group">
-        <li class="list-group-item">
-        <span class="glyphicon glyphicon-bullhorn"></span> Reminders
+        <li class="list-group-item radioButtons">
+          <span class="glyphicon glyphicon-bullhorn"> </span> Reminders
+          <form class = "reminders">
+            <input type="radio" name="reminder" id="yes" value="yes" checked="checked">  Yes<br>
+            <input type="radio" name="reminder" id="no" value="no">  No<br>
+          </form>
         </li>
-        <div class="onoffswitch">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-          <label class="onoffswitch-label" for="myonoffswitch">
-              <div class="onoffswitch-inner"></div>
-              <div class="onoffswitch-switch"></div>
-          </label>
-        </div>
-
+        <li class="list-group-item choices">
+            Food    <input type="checkbox" name="choice" value="Food"><br>
+            Sleep    <input type="checkbox" name="choice" value="Sleep"><br>
+            Exercise    <input type="checkbox" name="choice" value="Exercise"></br>
+        </li>
       </ul>
+     <!-- <script>
+        if(document.getElementById("no").checked) {
+          $('li.choices').hide();
+          console.log('ALKJDHSLKJDH');
+        }
+      </script> -->
+      
 
       </div>
     </center>
