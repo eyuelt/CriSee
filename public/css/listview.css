@@ -1,0 +1,33 @@
+.listview table {
+  width: 100%;
+  border: 3px solid black;
+  border-collapse: collapse;
+  margin: 30px 0px 10px 0px;
+}
+
+.listview tr {
+  background-color: #FFFFFF;
+  border: 1px solid black;
+}
+
+.listview-elem {
+  padding: 10px;
+}
+
+#more-btn {
+  font-size: 160%;
+}
+
+.circle {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  float:right;
+  background-color: white;
+  margin: 5px 25px;
+}
+
+body {
+  padding-bottom: 45px;
+}

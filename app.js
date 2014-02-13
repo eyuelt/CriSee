@@ -36,7 +36,8 @@ app.get('/', index.view);
 app.get('/signin', signin.view);
 app.post('/signin', signin.login);
 app.get('/logout', signin.logout);
-app.get('/calendar', calendar.view);
+app.get('/calendar', index.calendarview);
+app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
 // not yet implemented
