@@ -1,8 +1,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
-
+var handlebars = require('express3-handlebars');
+var signup = require('./routes/signup');
 var index = require('./routes/index');
 var signin = require('./routes/signin');
 var error = require('./routes/error');
@@ -34,6 +34,7 @@ if ('development' == app.get('env')) {
 // Add routes here
 app.get('/', index.view);
 app.get('/signin', signin.view);
+app.get('/signup', signup.view);
 app.post('/signin', signin.login);
 app.get('/logout', signin.logout);
 app.get('/calendar', index.calendarview);
@@ -43,7 +44,6 @@ app.get('/settings', settings.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);
 app.get('/addevent', error.notCreated);
-app.get('/signup', error.notCreated);
 app.get('/search', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
