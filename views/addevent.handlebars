@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <title>CriSee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <link href="css/addevent.css" rel="stylesheet">
+    <link href="css/slider.css" rel="stylesheet">
+
+    <!-- JavaScript -->
+    <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap-slider.js"></script>
+
+
+  </head>
+  <body>
+      <h2> Add Event </h2>
+      
+      <div class="container">
+      </br>
+      <form role="form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Event Name</label>
+          <input type="email" class="form-control" id="eventName" placeholder="Enter event">
+        </div>
+
+      <form role="form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Date</label>
+          <input type="date" class="form-control" id="eventName" placeholder="Enter due date">
+        </div>
+      <label> Stress Level </label>
+      </br>
+    </br>
+        <input id="stressLevel" data-slider-id='stressSlider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
+        <img class = "smiley">
+
+      <script>
+       $('#stressLevel').slider({
+          formater: function(value) {
+            return 'Stress Level: ' + value;
+          }
+//add code to change smiley images when stress levels are at a certain value
+
+        });
+
+      </script>
+
+      </div>
+    </center>
+  </body>
+</html>
