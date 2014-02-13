@@ -14,21 +14,18 @@
     <div class="container">
       <img id="logo" src="/images/crisee-logo.png" class="img-responsive img-rounded"/>
 
-      <form id="loginForm" role="form" method="get" action="/">
+      <form id="loginForm" role="form" method="post" action="/signin">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" class="form-control" id="username" placeholder="Username" name="username">
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="Don't actually put a password here">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         <div class="form-group">
-          <input type="checkbox" id="remember" value="Remember me"></input>
+          <input type="checkbox" id="remember" value="the 5th of november" name="remember"></input>
           <label for="remember">Remember me</label>
-        </div>
-        <div class="form-group">
-          <input type="hidden" name="auth" value="true"/>
         </div>
         <input type="submit" id="submitBtn" class="btn btn-default" value="Sign in"></input>
       </form>
