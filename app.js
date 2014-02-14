@@ -9,7 +9,7 @@ var error = require('./routes/error');
 var calendar = require('./routes/calendar');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
-var addEvent = require('./routes/addevent');
+var addevent = require('./routes/addevent');
 var events = require('./routes/events');
 
 var app = express();
@@ -43,7 +43,7 @@ app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
-app.get('/addevent', addEvent.view);
+app.get('/addevent', addevent.view);
 app.get('/events', events.getEvents);
 // not yet implemented
 app.get('/reminders', error.notCreated);

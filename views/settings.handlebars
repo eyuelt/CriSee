@@ -9,58 +9,63 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/settings.css" rel="stylesheet">
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-switch.css" rel="stylesheet">
   </head>
   <body>
-    <center>
+      <h2> Settings </h2>
 
       <div class="container">
-      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <h1> Settings </h1>
-      </nav>
 
-      <ul class="list-group">
-        <li class="list-group-item"> 
-          <span class="glyphicon glyphicon-envelope"></span> Email          
-          <form> 
-            <input type="text" name="email"><br>
-          </form>
-        </li>
-        <li class="list-group-item"> 
-          <span class="glyphicon glyphicon-earphone"></span> Phone        
-          <form>
-           <input type="text" name="phone"><br>
-          </form>
-        </li>
-      </ul>
+      <form role="form">
+        <div class="form-group">
+          <label for="inputEmail">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+        </div>
 
-      <ul class="list-group">
-        <li class="list-group-item radioButtons">
-          <span class="glyphicon glyphicon-bullhorn"> </span> Reminders
-          <form class = "reminders">
-            <input type="radio" name="reminder" id="yes" value="yes" checked="checked">  Yes<br>
-            <input type="radio" name="reminder" id="no" value="no">  No<br>
-          </form>
-        </li>
-        <li class="list-group-item choices">
-            Food    <input type="checkbox" name="choice" value="Food"><br>
-            Sleep    <input type="checkbox" name="choice" value="Sleep"><br>
-            Exercise    <input type="checkbox" name="choice" value="Exercise"></br>
-        </li>
-      </ul>
+      <form role="form">
+        <div class="form-group">
+          <label for="inputPhone">Phone </label>
+          <input type="tel" class="form-control" id="inputPhone" placeholder="Enter phone number">
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <label> Reminders </label>
+            <div class="radio">
+              <label> 
+                <input type="radio" name="optionsRadios" id="yes" value="option1" checked> Yes
+              </label>
+            </div>
+            <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="no" value="option2"> No
+            </label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="control-group">
+          <div class="controls">
+          <label class="checkbox"> <input type="checkbox"> Food </label>
+          <label class="checkbox"> <input type="checkbox"> Sleep </label>
+          <label class="checkbox"> <input type="checkbox"> Exercise </label>
+
      <!-- <script>
         if(document.getElementById("no").checked) {
           $('li.choices').hide();
           console.log('ALKJDHSLKJDH');
         }
       </script> -->
-      
-
+    
       </div>
-    </center>
 
 
     <!-- JavaScript -->
     <script src="js/jquery-1.11.0.js"></script>
     <script src="js/bootstrap.js"></script>
+    <script src="jquery.js"></script>
+    <script src="bootstrap-switch.js"></script>
   </body>
 </html>
