@@ -19,48 +19,45 @@
 
   </head>
   <body>
-      <h2> Add Event </h2>
-      
-      <div class="container">
+    <h2> Add Event </h2>
 
-      </br>
+    <div class="container">
+
+      <br/>
       <form role="form" method="post" action="/addevent">
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input type="email" class="form-control" id="eventName" placeholder="Enter event" name="description"></input>
         </div>
 
-      <form role="form">
-        <div class="form-group">
-          <label for="deadline">Date</label>
-          <input type="date" class="form-control" id="deadline" placeholder="Enter due date" name="deadline"></input>
-        </div>
-        <div class="form-group">
-          <label for="R">Stress Level</label><br/>
-          <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
-        </div>
+        <form role="form">
+          <div class="form-group">
+            <label for="deadline">Date</label>
+            <input type="date" class="form-control" id="deadline" placeholder="Enter due date" name="deadline"></input>
+          </div>
+          <div class="form-group">
+            <label for="R">Stress Level</label><br/>
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
+          </div>
 
-      <p>
-      <b>Stress Level</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" />
-      </p>
-      <div id="RGB"></div>
+          <br/>
+          <button type="submit" class="btn btn-primary">Add Event to Calendar</button>
+          <a href="../" class="btn btn-default pull-right" role="button">Cancel</a>
+        </form>
+      </div>
 
-      <script> 
-      var RGBChange = function() {
-        var red = Math.floor((255 * r.getValue()) / 100),
-            green = Math.floor((255 * (100 - r.getValue()) / 100)),
-            blue = 0;
-        $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
-        $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')
-      };
-      var r = $('#R').slider()
-          .on('slide', RGBChange)
-          .data('slider'); 
+      <script>
+        var RGBChange = function() {
+          var red = Math.floor((255 * r.getValue()) / 100),
+          green = Math.floor((255 * (100 - r.getValue()) / 100)),
+          blue = 0;
+          $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
+          $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')
+        };
+        var r = $('#R').slider()
+        .on('slide', RGBChange)
+        .data('slider');
       </script>
 
-      </br>
-      <button type="submit" class="btn btn-primary">Add Event to Calendar</button>
-      <a href="../" class="btn btn-primary" role="button">Cancel</a>
-    </center>
-  </body>
-</html>
+    </body>
+  </html>
