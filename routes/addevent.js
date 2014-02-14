@@ -1,5 +1,5 @@
 exports.view = function(req, res) {
-  res.render('addevent');
+  res.render('addevent', {'title':'Add Event', 'buttontext':'Add Event to Calendar'});
 };
 
 var events = require('../events.json');
