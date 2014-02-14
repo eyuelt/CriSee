@@ -47,6 +47,7 @@ Calendar.prototype.createMainHeader = function(table) {
   left.className = "navigator";
 
   middle.setAttribute("colspan", 5);
+  middle.setAttribute("id", "monthyear");
   var title = this.months[this.date.getMonth()] + " " + this.date.getFullYear();
   middle.appendChild(document.createTextNode(title));
 
@@ -102,6 +103,12 @@ function addThisMonthListeners() {
     selected = this;
     this.style.backgroundColor = "#EEE";
     this.style.border = "1px solid black";
+
+    var day = this.innerText;
+    var monthyear = $("#monthyear")[0].innerText;
+    var datearr = monthyear.split(' ');
+    datearr.splice(1,0,day);
+    createListOfEventsForDay(datearr.join(' '));
     $('#dayview').show();
   });
 }
@@ -110,4 +117,12 @@ function addNavigatorListeners() {
   $('.calendar td.navigator a').click(function(e) {
     $('#dayview').hide();
   });
+}
+
+function createListOfEventsForDay(datestr) {
+  $.get("/events?date="+datestr, handleResults);
+  function handleResults(result) {
+    console.log('Events for ' + result.date + ':\n' + JSON.stringify(result.events));
+
+  };
 }
