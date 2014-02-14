@@ -53,16 +53,15 @@
 
     <div class="container">
       <div class="listview">
+        <a href="/addevent" class="btn btn-primary btn-lg btn-block active" role="button">Add Event</a>
         <table>
-          <tr>
-            <th class="listview-elem">
-              Add Event...
-            </th>
-          </tr>
           {{#each events}}
           <tr>
             <td class="listview-elem">
-              {{description}}
+              {{description}} 
+            </td>
+            <td>
+              <a href="/editevent" class="btn btn-default active" role="button"> > </a>
             </td>
           </tr>
           {{/each}}
