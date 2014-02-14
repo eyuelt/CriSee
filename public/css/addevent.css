@@ -14,28 +14,11 @@ h2 {
 }
 
 
-#RGB {
-	height: 20px;
-	background: rgb(128, 128, 128);
-}
-#RC .slider-selection {
-	background: #FF8282;
-}
 #RC .slider-handle {
-	background: red;
+	background-color: rgb(255,0,0);
+	border: solid gray 2px;
 }
-#GC .slider-selection {
-	background: #428041;
-}
-#GC .slider-handle {
-	background: green;
-}
-#BC .slider-selection {
-	background: #8283FF;
-}
-#BC .slider-handle {
-	border-bottom-color: blue;
-}
-#R, #G, #B {
+#R {
+	background-color: rgb(255,0,0);
 	width: 300px;
 }
