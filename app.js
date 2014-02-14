@@ -45,6 +45,7 @@ app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
 app.get('/addevent', addevent.view);
+app.post('/addevent', addevent.addevent);
 app.get('/events', events.getEvents);
 // not yet implemented
 app.get('/search', error.notCreated);
