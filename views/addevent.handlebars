@@ -42,8 +42,8 @@
 
       <script> 
       var RGBChange = function() {
-        var red = Math.floor((255 * (100 - r.getValue()) / 100)),
-            green = Math.floor((255 * r.getValue()) / 100),
+        var red = Math.floor((255 * r.getValue()) / 100),
+            green = Math.floor((255 * (100 - r.getValue()) / 100)),
             blue = 0;
         $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
         $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')
@@ -54,7 +54,7 @@
       </script>
 
       </br>
-      <button type="submit" class="btn btn-default">Add Event to Calendar</button>
+      <button type="submit" class="btn btn-primary">Add Event to Calendar</button>
     
     </center>
   </body>
