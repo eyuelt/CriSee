@@ -10,6 +10,7 @@
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/index.css" rel="stylesheet">
     <link href="css/calendar-obj.css" rel="stylesheet">
+    <link href="css/calendarview.css" rel="stylesheet">
   </head>
   <body>
     <!-- header -->
@@ -55,11 +56,14 @@
 
 
     <center>
-     <div class="container">
+      <div class="container">
 
         <div id="cal"></div>
         <div id="dayview">
-          <p>No events listed for date</p>
+          <div class="listview">
+            <table>
+            </table>
+          </div>
           <a id="addeventbutton" href="/addevent">Add Event</a>
         </div>
 
@@ -74,6 +78,6 @@
     <script type="text/javascript">
       var cal = new Calendar("cal");
       cal.render(new Date());
-    </script>
-  </body>
-</html>
+      </script>
+    </body>
+  </html>

@@ -120,9 +120,24 @@ function addNavigatorListeners() {
 }
 
 function createListOfEventsForDay(datestr) {
+  var table = $('.listview table')[0];
+  clearContentsOfContainer(table);
   $.get("/events?date="+datestr, handleResults);
   function handleResults(result) {
-    console.log('Events for ' + result.date + ':\n' + JSON.stringify(result.events));
-
+    //console.log('Events for ' + result.date + ':\n' + JSON.stringify(result.events));
+    if (result.events.length === 0) {
+      var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
+      cell.className = "listview-elem";
+      cell.appendChild(document.createTextNode("No events listed for " + datestr));
+    } else {
+      for (var i = 0; i < result.events.length; i++) {
+        addEventToTable(result.events[i]);
+      }
+    }
+  };
+  function addEventToTable(event) {
+    var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
+    cell.className = "listview-elem";
+    cell.appendChild(document.createTextNode(event.description));
   };
 }
