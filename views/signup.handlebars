@@ -8,7 +8,7 @@
     <!-- CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/signin.css" rel="stylesheet">
+    <link href="css/signup.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
@@ -17,14 +17,14 @@
       </nav>
       <br></br>
       <br></br>
-      <form id="loginForm" role="form" method="get" action="/">
+      <form id="loginForm" role="form" method="post" action="/signup">
         <div class="form-group">
           <label for="username">Username:</label>
           <input type="text" class="form-control" id="username" placeholder="Username" name="username">
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" class="form-control" id="password" placeholder="Don't actually put a password here">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
         </div>
         <div class="form-group">
           <input type="hidden" name="auth" value="true"/>
@@ -36,6 +36,5 @@
     <!-- JavaScript -->
     <script src="js/jquery-1.11.0.js"></script>
     <script src="js/bootstrap.js"></script>
-    <script src="js/signin.js"></script>
   </body>
 </html>
