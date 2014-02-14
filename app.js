@@ -47,7 +47,6 @@ app.get('/settings', settings.view);
 app.get('/addevent', addevent.view);
 app.get('/events', events.getEvents);
 // not yet implemented
-app.get('/reminders', error.notCreated);
 app.get('/search', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){
