@@ -9,6 +9,7 @@ var error = require('./routes/error');
 var calendar = require('./routes/calendar');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
+var addevent = require('./routes/addevent');
 
 var app = express();
 
@@ -41,9 +42,9 @@ app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
+app.get('/addevent', addevent.view);
 // not yet implemented
 app.get('/reminders', error.notCreated);
-app.get('/addevent', error.notCreated);
 app.get('/search', error.notCreated);
 
 http.createServer(app).listen(app.get('port'), function(){

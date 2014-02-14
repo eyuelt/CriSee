@@ -36,8 +36,36 @@
         </div>
       <label> Stress Level </label>
       </br>
-    </br>
-        <input id="stressLevel" data-slider-id='stressSlider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
+      </br>
+
+
+<p>
+<b>R</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="square" />
+</p>
+<p>
+<b>G</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="GC" id="G" data-slider-tooltip="hide" data-slider-handle="round" />
+</p>
+<p>
+<b>B</b> <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="BC" id="B" data-slider-tooltip="hide" data-slider-handle="triangle" />
+</p>
+<div id="RGB"></div>
+
+<script> var RGBChange = function() {
+  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
+};
+
+var r = $('#R').slider()
+    .on('slide', RGBChange)
+    .data('slider');
+var g = $('#G').slider()
+    .on('slide', RGBChange)
+    .data('slider');
+var b = $('#B').slider()
+    .on('slide', RGBChange)
+    .data('slider');
+</script>
+
+        <!--<input id="stressLevel" data-slider-id='stressSlider' type="text" data-slider-min="0" data-slider-max="10" data-slider-step="1" data-slider-value="0"/>
         <img class = "smiley">
 
       <script>
@@ -49,7 +77,7 @@
 
         });
 
-      </script>
+      </script>-->
 
       </div>
     </center>
