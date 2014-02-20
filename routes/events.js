@@ -1,19 +1,18 @@
-var events = require('../events.json');
+var models = require('../models');
 
 exports.getEvents = function(req, res) {
-  var date = new Date(req.query.date);
-  var eventsfordate = eventsForDate(date, events.events);
-  res.json({'date':date.toDateString(),'events':eventsfordate});
-};
-
-//takes a date object and an array of events
-//returns an array with the events for that date
-function eventsForDate(date, eventsArray) {
-  var eventsForDate = [];
-  for (var i = 0; i < eventsArray.length; i++) {
-    if (eventsArray[i].deadline == date.toDateString()) {
-      eventsForDate.push(eventsArray[i]);
-    }
+  var search_options = {};
+  var date = undefined;
+  if (req.query.date !== undefined) {
+    date = new Date(req.query.date);
+    search_options.deadline = date;
   }
-  return eventsForDate;
+  console.log(search_options);
+  models.Event.find(search_options).exec(function(err, events) { //sort?
+    if (err) { console.log(err); res.send(500); }
+    var result = {};
+    result.date = (date === undefined) ? "All" : date.toDateString();
+    result.events = events;
+    res.json(result);
+  });
 };
