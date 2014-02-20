@@ -2,25 +2,28 @@ exports.view = function(req, res) {
   res.render('signup');
 };
 
-var users = require('../users.json');
+var models = require('../models');
 
 exports.signup = function(req, res) {
-  var username = req.body.username;
-  var password = req.body.password;
-  if (!nameInUse(username)) {
-    users.users.push({ 'username':username, 'password':password });
-    res.redirect('/'); //say successfully added
-  } else {
-    res.redirect('signup'); //say name in use
-  }
-};
+  var newUser = new models.User({
+    "username": req.body.username,
+    "password": req.body.password
+  });
 
-function nameInUse(username) {
-  var usersArray = users.users;
-  for (var i = 0; i < usersArray.length; i++) {
-    if (username !== undefined && username.toLowerCase() === usersArray[i].username.toLowerCase()) {
-      return true;
+  models.User.find({ "username": newUser.username }).exec(function(err, users) { //make sure username is unique
+    console.log("All of the users with the given username: " + users);
+    var nameInUse = users.length > 0;
+    if (!nameInUse) {
+      newUser.save(afterSaving);
+      function afterSaving(err) {
+        if (err) {
+          console.log(err);
+          res.send(500);
+        }
+        res.redirect('/'); //TODO: say successfully added
+      };
+    } else {
+      res.redirect('signup'); //TODO: say that name is in use
     }
-  }
-  return false;
+  });
 };

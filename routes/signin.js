@@ -2,42 +2,31 @@ exports.view = function(req, res) {
   res.render('signin');
 };
 
+var models = require('../models');
+
 exports.login = function(req, res) {
-  if (isValidLogin(req.body.username, req.body.password)) {
-    var options = {};
-    if (req.body.remember) options = { maxAge: 900000 };
-    res.cookie('username', req.body.username, options);
-    res.redirect('/');
-  } else {
-    res.redirect('/signin');
-  }
+  checkLogin(req.body.username, req.body.password, function(isValidLogin, user_id) {
+    if (isValidLogin) {
+      var options = {};
+      if (req.body.remember) options = { maxAge: 900000 };
+      res.cookie('username', req.body.username, options);
+      res.cookie('user_id', user_id, options);
+      res.redirect('/');
+    } else {
+      res.redirect('/signin');
+    }
+  });
+};
+
+function checkLogin(username, password, callback) {
+  models.User.find({ "username": username }).exec(function(err, users) {
+    if (err) { console.log(err); res.send(500); };
+    if (users.length === 1 && users[0].password === password) callback(true, users[0]._id);
+    else callback(false);
+  });
 };
 
 exports.logout = function(req, res) {
   res.clearCookie('username');
   res.redirect('/');
-};
-
-var users = require('../users.json');
-
-function isValidLogin(username, password) {
-  var user_index = userIndexInJson(users.users, username);
-  if (user_index >= 0) {
-    if (password === users.users[user_index].password) {
-      return true;
-    }
-  }
-  console.log("Invalid login");
-  return false;
-};
-
-function userIndexInJson(usersArray, username) {
-  var user_index = -1;
-  for (var i = 0; i < usersArray.length; i++) {
-    if (username !== undefined && username.toLowerCase() === usersArray[i].username.toLowerCase()) {
-      user_index = i;
-      break;
-    }
-  }
-  return user_index;
 };

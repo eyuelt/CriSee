@@ -16,8 +16,7 @@
     <script src="js/jquery-1.11.0.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-slider.js"></script>
-
-
+    <script src="js/apple-mobile-webapp.js" ></script>
   </head>
   <body>
     <script src="jquery.js"></script>
@@ -55,8 +54,8 @@
           </div>
 
           <br/>
-          <button type="submit" class="btn btn-primary">{{ buttontext}}</button>
-          <a href="../" class="btn btn-default pull-right" role="button">Cancel</a>
+          <input type="submit" id="submitBtn" class="btn btn-primary" value="{{ buttontext}}"></input>
+          <a href="../" id="cancelBtn" class="btn btn-default pull-right" role="button">Cancel</a>
         </form>
       </div>
 

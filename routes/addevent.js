@@ -2,7 +2,7 @@ exports.view = function(req, res) {
   res.render('addevent', {'title':'Add Event', 'buttontext':'Add Event to Calendar'});
 };
 
-var events = require('../events.json');
+var models = require('../models');
 
 exports.addevent = function(req, res) {
   var description = req.body.description;
@@ -11,15 +11,19 @@ exports.addevent = function(req, res) {
   if (description.length > 0 && deadline.length > 0) {
     deadline = formatDate(deadline);
     difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-    events.events.push({
-      'description': description,
-      'deadline': deadline,
-      'difficulty': difficulty
+    var newEvent = new models.Event({
+      "user_id": req.cookies.user_id,
+      "description": description,
+      "deadline": deadline,
+      "difficulty": difficulty
     });
-    console.log(events);
-    res.redirect('../');
+    newEvent.save(function(err) {
+      if (err) { console.log(err); res.send(500); }
+      console.log('just added: ' + newEvent);
+      res.redirect('../'); //TODO: say event added
+    });
   } else {
-    res.redirect('../addevent'); //say invalid event
+    res.redirect('../addevent'); //TODO: say invalid event
   }
 };
 

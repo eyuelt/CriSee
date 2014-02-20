@@ -10,8 +10,11 @@ exports.calendarview = function(req, res) {
   res.render('calendarview');
 };
 
-var events = require('../events.json')
+var models = require('../models');
 
 exports.listview = function(req, res) {
-  res.render('listview', events);
+  models.Event.find({ 'user_id': req.cookies.user_id }).exec(function(err, events) {
+    if (err) { console.log(err); res.send(500); }
+    res.render('listview', { 'events': events } );
+  });
 };

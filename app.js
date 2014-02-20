@@ -12,6 +12,13 @@ var settings = require('./routes/settings');
 var addevent = require('./routes/addevent');
 var editevent = require('./routes/editevent');
 var events = require('./routes/events');
+var mongoose = require('mongoose');
+
+// Connect to the Mongo database, whether locally or on Heroku
+var local_database_name = 'CriSee';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name;
+var database_uri = process.env.MONGOLAB_URI || local_database_uri;
+mongoose.connect(database_uri);
 
 var app = express();
 
