@@ -18,6 +18,7 @@ Calendar.prototype.render = function(date) {
 
   addThisMonthListeners();
   addNavigatorListeners();
+  colorCalendar();
 };
 
 
@@ -140,4 +141,16 @@ function createListOfEventsForDay(datestr) {
     cell.className = "listview-elem";
     cell.appendChild(document.createTextNode(event.description));
   };
+}
+
+function colorCalendar() {
+  var monthyear = $("#monthyear")[0].innerText;
+  $.get('/colors/?monthyear='+monthyear, function(result) {
+    //apply colors to calendar
+    var boxes = $('td.thisMonth');
+    for (var i = 0; i < boxes.length; i++) {
+      var box = boxes[i];
+      box.style.backgroundColor = result.data[parseInt(box.innerText)-1].color;
+    }
+  });
 }
