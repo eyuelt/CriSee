@@ -1,7 +1,9 @@
 var models = require('../models');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 exports.getEvents = function(req, res) {
   var search_options = {};
+  search_options.user_id = new ObjectId(req.cookies.user_id);
   var date = undefined;
   if (req.query.date !== undefined) {
     date = new Date(req.query.date);

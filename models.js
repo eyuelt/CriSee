@@ -6,7 +6,7 @@ var UserSchema = new Mongoose.Schema({
 });
 
 var EventSchema = new Mongoose.Schema({
-  //"user_id": User,
+  "user_id": {type: Mongoose.Schema.ObjectId, ref:'UserSchema'},
   "description": String,
   "deadline": Date,
   "difficulty": Number

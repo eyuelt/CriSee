@@ -12,6 +12,7 @@ exports.addevent = function(req, res) {
     deadline = formatDate(deadline);
     difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
     var newEvent = new models.Event({
+      "user_id": req.cookies.user_id,
       "description": description,
       "deadline": deadline,
       "difficulty": difficulty

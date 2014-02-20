@@ -5,11 +5,12 @@ exports.view = function(req, res) {
 var models = require('../models');
 
 exports.login = function(req, res) {
-  checkLogin(req.body.username, req.body.password, function(isValidLogin) {
+  checkLogin(req.body.username, req.body.password, function(isValidLogin, user_id) {
     if (isValidLogin) {
       var options = {};
       if (req.body.remember) options = { maxAge: 900000 };
       res.cookie('username', req.body.username, options);
+      res.cookie('user_id', user_id, options);
       res.redirect('/');
     } else {
       res.redirect('/signin');
@@ -20,7 +21,7 @@ exports.login = function(req, res) {
 function checkLogin(username, password, callback) {
   models.User.find({ "username": username }).exec(function(err, users) {
     if (err) { console.log(err); res.send(500); };
-    if (users.length === 1 && users[0].password === password) callback(true);
+    if (users.length === 1 && users[0].password === password) callback(true, users[0]._id);
     else callback(false);
   });
 };
