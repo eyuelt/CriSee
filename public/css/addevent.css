@@ -2,6 +2,7 @@ body {
   background-color: #24D9FF;
   font-size: 16px;
 }
+
 h2 {
   text-align: center;
   vertical-align: bottom;
@@ -17,7 +18,16 @@ h2 {
   background-color: rgb(255,0,0);
   border: solid gray 2px;
 }
+
 #R {
   background-color: rgb(255,0,0);
   width: 300px;
+}
+
+#submitBtn {
+  width:65%;
+}
+
+#cancelBtn {
+  width:30%;
 }

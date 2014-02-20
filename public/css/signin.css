@@ -5,3 +5,11 @@ body {
 .container #logo {
   margin-top: 10px;
 }
+
+#submitBtn {
+  width:65%;
+}
+
+#signUpBtn {
+  width:30%;
+}
