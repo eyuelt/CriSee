@@ -12,6 +12,7 @@ var settings = require('./routes/settings');
 var addevent = require('./routes/addevent');
 var editevent = require('./routes/editevent');
 var events = require('./routes/events');
+var colors = require('./routes/colors');
 var mongoose = require('mongoose');
 
 // Connect to the Mongo database, whether locally or on Heroku
@@ -56,6 +57,7 @@ app.get('/addevent', addevent.view);
 app.post('/addevent', addevent.addevent);
 app.get('/editevent', editevent.view);
 app.get('/events', events.getEvents);
+app.get('/colors', colors.getColors);
 // not yet implemented
 app.get('/search', error.notCreated);
 
