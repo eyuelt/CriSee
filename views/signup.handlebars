@@ -10,12 +10,33 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/signup.css" rel="stylesheet">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
   </head>
   <body>
+    <script src="jquery.js"></script>
+
     <h2> Sign Up </h2>
     <div class="container">
+     
+      <!-- Alert buttons -->
+      <div class="alert alert-success alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Success!</strong> You created a new username and password!
+      </div>
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Oh no!</strong> That username is already in use.
+      </div>
+
+      <script>
+        setTimeout(function(){
+          $('.alert.alert-success').delay(500).fadeOut("slow");
+        });
+      </script>
+
       <br></br>
-      <br></br>
+
       <form id="loginForm" role="form" method="post" action="/signup">
         <div class="form-group">
           <label for="username">Username:</label>
@@ -30,6 +51,7 @@
         </div>
         <input type="submit" id="submitBtn" class="btn btn-default" value="Sign up"></input>
       </form>
+
     </div>
 
     <!-- JavaScript -->

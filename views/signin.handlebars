@@ -10,10 +10,17 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/signin.css" rel="stylesheet">
+
   </head>
   <body>
     <div class="container">
       <img id="logo" src="/images/crisee-logo.png" class="img-responsive img-rounded"/>
+      </br>
+      <!--Alert buttons-->
+      <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        You entered an incorrect username and/or password.
+      </div>
 
       <form id="loginForm" role="form" method="post" action="/signin">
         <div class="form-group">
