@@ -10,8 +10,8 @@ exports.getColors = function(req, res) {
     monthyear = req.query.monthyear;
 
     var start = new Date(monthyear);
-    var end = new Date();
-    end.setMonth(start.getMonth() + 1);
+    var end = new Date(start);
+    end.setMonth(end.getMonth() + 1);
     end.setDate(NUM_DAYS_TRAIL_BACK);
 
     var search_options = {};
