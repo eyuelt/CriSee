@@ -1,12 +1,18 @@
 exports.view = function(req, res) {
-  var options = {};
-  options.editing = true;
-  if (req.query.missingfields) options.missing_fields = true;
-  options.date = unformatDate(new Date().toDateString());
-  res.render('addevent', options);
+  if (req.query.id) {
+    var options = {};
+    options.editing = true;
+    options.id = req.query.id;
+    if (req.query.missingfields) options.missing_fields = true;
+    options.date = unformatDate(new Date().toDateString());
+    res.render('addevent', options);
+  } else {
+    res.send(500);
+  }
 };
 
 var models = require('../models');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 //TODO: make this actually edit, not just add new
 exports.editevent = function(req, res) {
@@ -16,19 +22,22 @@ exports.editevent = function(req, res) {
   if (description.length > 0 && deadline.length > 0) {
     deadline = formatDate(deadline);
     difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-    var newEvent = new models.Event({
-      "user_id": req.cookies.user_id,
-      "description": description,
-      "deadline": deadline,
-      "difficulty": difficulty
-    });
-    newEvent.save(function(err) {
-      if (err) { console.log(err); res.send(500); }
-      console.log('just added: ' + newEvent);
-      res.redirect('/calendar?eventedited=1');
+    var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.body.id)};
+    models.Event.findOne(search_options, function (err, event) {
+      if (err) {
+        console.log(err);
+        res.send(500);
+      } else {
+        event.description = description;
+        event.deadline = deadline;
+        event.difficulty = difficulty;
+        event.save(function(err){
+          res.redirect('/calendar?eventedited=1');
+        });
+      }
     });
   } else {
-    res.redirect('editevent?missingfields=1'); //TODO: say invalid event
+    res.redirect('editevent?id=' + req.body.id + '&missingfields=1');
   }
 };
 
