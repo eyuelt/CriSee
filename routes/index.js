@@ -16,8 +16,16 @@ exports.calendarview = function(req, res) {
 var models = require('../models');
 
 exports.listview = function(req, res) {
-  models.Event.find({ 'user_id': req.cookies.user_id }).exec(function(err, events) {
+  models.Event.find({ 'user_id': req.cookies.user_id }).sort('-deadline').exec(function(err, events) {
     if (err) { console.log(err); res.send(500); }
-    res.render('listview', { 'events': events } );
+    var e = [];
+    for (var i = 0; i < events.length; i++) {
+      e[i] = {};
+      e[i]._id = events[i]._id;
+      e[i].description = events[i].description;
+      e[i].deadline = new Date(events[i].deadline).toDateString();
+      console.log(e[i])
+    }
+    res.render('listview', { 'events': e } );
   });
 };
