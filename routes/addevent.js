@@ -2,6 +2,7 @@ exports.view = function(req, res) {
   var options = {};
   if (req.query.missingfields) options.missing_fields = true;
   if (req.query.date) options.date = unformatDate(req.query.date);
+  else options.date = unformatDate(new Date().toDateString());
   res.render('addevent', options);
 };
 

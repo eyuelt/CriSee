@@ -2,6 +2,7 @@ exports.view = function(req, res) {
   var options = {};
   options.editing = true;
   if (req.query.missingfields) options.missing_fields = true;
+  options.date = unformatDate(new Date().toDateString());
   res.render('addevent', options);
 };
 
@@ -37,4 +38,15 @@ function formatDate(datestr) {
   var year = dateArr.splice(0,1);
   dateArr = dateArr.concat(year);
   return new Date(dateArr.join(' ')).toDateString();
+};
+
+// converts "Thu Feb 13 2014" to "2014-02-13"
+function unformatDate(datestr) {
+  var d = new Date(datestr);
+  var year = d.getFullYear();
+  var month = d.getMonth() + 1;
+  if (month < 10) month = "0" + month;
+  var day = d.getDate();
+  if (day < 10) day = "0" + day;
+  return year + '-' + month + '-' + day;
 };
