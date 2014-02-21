@@ -10,8 +10,8 @@ exports.getColors = function(req, res) {
     monthyear = req.query.monthyear;
 
     var start = new Date(monthyear);
-    var end = new Date();
-    end.setMonth(start.getMonth() + 1);
+    var end = new Date(start);
+    end.setMonth(end.getMonth() + 1);
     end.setDate(NUM_DAYS_TRAIL_BACK);
 
     var search_options = {};
@@ -68,7 +68,38 @@ function addEventToEventMap(event, eventMap, forMonth, daysInMonth) {
 };
 
 function colorForVal(val) {
+  /*
   if (val < 0.3 || val === undefined) return "#00ff00"; //green
   else if (val < 0.7) return "#ffff00"; //yellow
   else return "#ff0000"; //red
+  */
+  var percentVal = val * 100;
+  if (percentVal > 100) percentVal = 100;
+  // Uncomment this to make days with no events green
+  //if (percentVal === undefined || isNaN(percentVal)) percentVal = 0;
+
+  var red, green, blue;
+  if (percentVal > 50) {
+    red = 255;
+    green = 255 - ((percentVal - 50) * 5);
+    blue = 0;
+  } else {
+    red = percentVal * 5;
+    green = 255;
+    blue = 0;
+  }
+  var colorString = rgbToColorString(red, green, blue);
+  return colorString;
+};
+
+function rgbToColorString(r, g, b) {
+  r = parseInt(r.toFixed(0))
+  g = parseInt(g.toFixed(0))
+  b = parseInt(b.toFixed(0))
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+};
+
+function componentToHex(c) {
+  var hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
 };
