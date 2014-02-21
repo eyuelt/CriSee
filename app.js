@@ -5,8 +5,6 @@ var handlebars = require('express3-handlebars');
 var signup = require('./routes/signup');
 var index = require('./routes/index');
 var signin = require('./routes/signin');
-var error = require('./routes/error');
-var calendar = require('./routes/calendar');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
 var addevent = require('./routes/addevent');
@@ -56,10 +54,11 @@ app.get('/settings', settings.view);
 app.get('/addevent', addevent.view);
 app.post('/addevent', addevent.addevent);
 app.get('/editevent', editevent.view);
+app.post('/editevent', editevent.editevent);
 app.get('/events', events.getEvents);
 app.get('/colors', colors.getColors);
 // not yet implemented
-app.get('/search', error.notCreated);
+//app.get('/search', );
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

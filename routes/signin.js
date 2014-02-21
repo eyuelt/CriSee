@@ -1,5 +1,8 @@
 exports.view = function(req, res) {
-  res.render('signin');
+  var options = {};
+  if (req.query.usercreated) options.username_created = true;
+  if (req.query.badlogin) options.incorrect_login = true;
+  res.render('signin', options);
 };
 
 var models = require('../models');
@@ -13,7 +16,7 @@ exports.login = function(req, res) {
       res.cookie('user_id', user_id, options);
       res.redirect('/');
     } else {
-      res.redirect('/signin');
+      res.redirect('/signin?badlogin=1');
     }
   });
 };

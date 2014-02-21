@@ -7,7 +7,10 @@ exports.view = function(req, res) {
 };
 
 exports.calendarview = function(req, res) {
-  res.render('calendarview');
+  var options = {};
+  if (req.query.eventadded) options.event_added = true;
+  if (req.query.eventedited) options.event_edited = true;
+  res.render('calendarview', options);
 };
 
 var models = require('../models');
