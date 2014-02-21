@@ -91,7 +91,7 @@
             <table>
             </table>
           </div>
-          <a href="/addevent" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
+          <a href="/addevent" id="addeventbtn" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
         </div>
 
       </div>
@@ -106,6 +106,16 @@
       var cal = new Calendar("cal");
       cal.render(new Date());
       $('td.thisMonth')[new Date().getDate()-1].click();
+    </script>
+    <script type="text/javascript">
+      $('a#addeventbtn').click(function(e) {
+          var day = selected.innerText;
+          var monthyear = $("#monthyear")[0].innerText;
+          var datearr = monthyear.split(' ');
+          datearr.splice(1,0,day);
+          var fulldate = datearr.join(' ');
+          $(this).attr("href", this.href + "?date=" + fulldate);
+      });
     </script>
   </body>
 </html>
