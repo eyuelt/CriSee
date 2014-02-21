@@ -54,6 +54,7 @@ app.get('/settings', settings.view);
 app.get('/addevent', addevent.view);
 app.post('/addevent', addevent.addevent);
 app.get('/editevent', editevent.view);
+app.post('/editevent', editevent.editevent);
 app.get('/events', events.getEvents);
 app.get('/colors', colors.getColors);
 // not yet implemented
