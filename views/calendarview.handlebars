@@ -22,9 +22,6 @@
 
   </head>
   <body>
-
-    <script src="jquery.js"></script>
-
     <!-- header -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
@@ -69,10 +66,18 @@
     <center>
       <div class="container">
       <!-- Alert buttons -->
-      <div class="alert alert-success alert-dismissable">
+      {{#if event_added}}
+      <div id="event-added" class="alert alert-success alert-dismissable" style="margin-top:20px;">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>Event added</strong>
       </div>
+      {{/if}}
+      {{#if event_edited}}
+      <div id="event-added" class="alert alert-success alert-dismissable" style="margin-top:20px;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <strong>Event edited</strong>
+      </div>
+      {{/if}}
 
        <script>
         setTimeout(function(){

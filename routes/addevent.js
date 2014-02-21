@@ -1,5 +1,7 @@
 exports.view = function(req, res) {
-  res.render('addevent', {'title':'Add Event', 'buttontext':'Add Event to Calendar'});
+  var options = {};
+  if (req.query.missingfields) options.missing_fields = true;
+  res.render('addevent', options);
 };
 
 var models = require('../models');
@@ -20,10 +22,10 @@ exports.addevent = function(req, res) {
     newEvent.save(function(err) {
       if (err) { console.log(err); res.send(500); }
       console.log('just added: ' + newEvent);
-      res.redirect('../'); //TODO: say event added
+      res.redirect('/calendar?eventadded=1');
     });
   } else {
-    res.redirect('../addevent'); //TODO: say invalid event
+    res.redirect('addevent?missingfields=1'); //TODO: say invalid event
   }
 };
 

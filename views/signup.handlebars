@@ -10,28 +10,24 @@
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-theme.css" rel="stylesheet">
     <link href="css/signup.css" rel="stylesheet">
+
     <!-- JavaScript -->
     <script src="js/apple-mobile-webapp.js" ></script>
-    
   </head>
   <body>
 
     <h2> Sign Up </h2>
     <div class="container">
-     
+
+      <br></br>
+
       <!-- Alert buttons -->
-      <div class="alert alert-danger alert-dismissable">
+      {{#if name_in_use}}
+      <div id="name-in-use" class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>Oh no!</strong> That username is already in use.
       </div>
-
-      <script>
-        setTimeout(function(){
-          $('.alert.alert-success').delay(5000).fadeOut("slow");
-        });
-      </script>
-
-      <br></br>
+      {{/if}}
 
       <form id="loginForm" role="form" method="post" action="/signup">
         <div class="form-group">
