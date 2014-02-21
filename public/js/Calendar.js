@@ -98,12 +98,14 @@ var selected;
 function addThisMonthListeners() {
   $('.calendar td.thisMonth').click(function(e) {
     if (selected !== undefined) {
-      selected.style.backgroundColor = "";
+      //selected.style.backgroundColor = "";
       selected.style.border = "";
+      selected.style.fontWeight = "";
     }
     selected = this;
-    this.style.backgroundColor = "#EEE";
-    this.style.border = "1px solid black";
+    //this.style.backgroundColor = "#EEE";
+    this.style.border = "2px solid black";
+    this.style.fontWeight = "bold";
 
     var day = this.innerText;
     var monthyear = $("#monthyear")[0].innerText;

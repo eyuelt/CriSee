@@ -32,7 +32,7 @@ body {
 
 .calendar td {
   padding: 5px;
-  border: 1px dotted black;
+  border: 1px solid black;
   min-width: 20px;
 }
 
