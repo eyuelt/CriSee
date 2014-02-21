@@ -13,6 +13,7 @@ exports.addevent = function(req, res) {
   var description = req.body.description;
   var deadline = req.body.deadline;
   var difficulty = req.body.difficulty;
+
   if (description.length > 0 && deadline.length > 0) {
     deadline = formatDate(deadline);
     difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
