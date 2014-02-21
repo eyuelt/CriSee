@@ -57,15 +57,12 @@
 
     <div class="container">
       <div class="listview">
-        <a href="/addevent" class="btn btn-primary btn-lg btn-block active" role="button">Add Event</a>
+        <a href="/addevent" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
         <table>
           {{#each events}}
           <tr>
-            <td class="listview-elem">
-              {{description}}
-            </td>
             <td>
-              <a href="/editevent" class="btn btn-default active" role="button"> > </a>
+              <a href="/editevent" class="btn btn-default btn-block" id = "event" role="button">{{description}} </a> 
             </td>
           </tr>
           {{/each}}
