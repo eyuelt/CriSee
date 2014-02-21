@@ -105,6 +105,7 @@
     <script type="text/javascript">
       var cal = new Calendar("cal");
       cal.render(new Date());
+      $('td.thisMonth')[new Date().getDate()-1].click();
     </script>
   </body>
 </html>
