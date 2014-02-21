@@ -18,17 +18,13 @@
     <script src="js/bootstrap-slider.js"></script>
     <script src="js/apple-mobile-webapp.js" ></script>
   </head>
+  
   <body>
     <script src="jquery.js"></script>
 
     <h2> {{ title }} </h2>
 
     <div class="container">
-      <!-- Alert buttons -->
-      <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Event added</strong>
-      </div>
 
       <br/>
       <form role="form" method="post" action="/addevent">
@@ -37,20 +33,14 @@
           <input type="text" class="form-control" id="eventName" placeholder="Enter event" name="description"></input>
         </div>
 
-      <script>
-        setTimeout(function(){
-          $('.alert.alert-success').delay(5000).fadeOut("slow");
-        });
-      </script>
-
         <form role="form">
           <div class="form-group">
             <label for="deadline">Date</label>
             <input type="date" class="form-control" id="deadline" placeholder="Enter due date" name="deadline"></input>
           </div>
           <div class="form-group">
-            <label for="R">Stress Level</label><br/></br>
-            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="show" data-slider-handle="round" name="difficulty"></input>
+            <label for="R">Stress Level</label><br/>
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
           </div>
 
           <br/>

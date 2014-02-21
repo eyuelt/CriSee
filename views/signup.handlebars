@@ -12,21 +12,14 @@
     <link href="css/signup.css" rel="stylesheet">
     <!-- JavaScript -->
     <script src="js/apple-mobile-webapp.js" ></script>
-    <!-- jQuery -->
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
+    
   </head>
   <body>
-    <script src="jquery.js"></script>
 
     <h2> Sign Up </h2>
     <div class="container">
      
       <!-- Alert buttons -->
-      <div class="alert alert-success alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-        <strong>Success!</strong> You created a new username and password!
-      </div>
       <div class="alert alert-danger alert-dismissable">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <strong>Oh no!</strong> That username is already in use.
@@ -34,7 +27,7 @@
 
       <script>
         setTimeout(function(){
-          $('.alert.alert-success').delay(500).fadeOut("slow");
+          $('.alert.alert-success').delay(5000).fadeOut("slow");
         });
       </script>
 
