@@ -20,57 +20,80 @@
   </head>
   
   <body>
-    <script src="jquery.js"></script>
-
-    <h2> {{ title }} </h2>
+    {{#if editing}}
+    <h2>Edit Event</h2>
+    {{else}}
+    <h2>Add Event</h2>
+    {{/if}}
 
     <div class="container">
-
       <br/>
+
+      <!--Alert buttons-->
+      {{#if missing_fields}}
+      <div id="missing-fields" class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <center>Name and Date fields are required.</center>
+      </div>
+      {{/if}}
+
+      {{#if editing}}
+      <form role="form" method="post" action="/editevent">
+      {{else}}
       <form role="form" method="post" action="/addevent">
+      {{/if}}
         <div class="form-group">
           <label for="eventName">Event Name</label>
           <input type="text" class="form-control" id="eventName" placeholder="Enter event" name="description"></input>
         </div>
 
-        <form role="form">
-          <div class="form-group">
-            <label for="deadline">Date</label>
-            <input type="date" class="form-control" id="deadline" placeholder="Enter due date" name="deadline"></input>
-          </div>
-          <div class="form-group">
-            <label for="R">Stress Level</label><br/>
-            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
-          </div>
+        <div class="form-group">
+          <label for="deadline">Date</label>
+          <input type="date" class="form-control" id="deadline" placeholder="Enter due date" name="deadline"></input>
+        </div>
+        <div class="form-group">
+          <label for="R">Stress Level</label><br/>
+          <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
+        </div>
 
-          <br/>
-          <input type="submit" id="submitBtn" class="btn btn-primary" value="{{ buttontext}}"></input>
-          <a href="../" id="cancelBtn" class="btn btn-default pull-right" role="button">Cancel</a>
-        </form>
-      </div>
 
-      <script>
-        var RGBChange = function() {
-          var currVal = r.getValue();
+        <br/>
+        {{#if editing}}
+        <input type="submit" id="submitBtn" class="btn btn-primary" value="Save"></input>
+        {{else}}
+        <input type="submit" id="submitBtn" class="btn btn-primary" value="Add Event to Calendar"></input>
+        {{/if}}
+        <a href="../" id="cancelBtn" class="btn btn-default pull-right" role="button">Cancel</a>
 
-          if (currVal > 50) {
-            var red = 255
-            var green = 255 - ((currVal - 50) * 5);
-            var blue = 0;
-          } else {
-            var red = currVal * 5;
-            var green = 255;
-            var blue = 0;
-          }
+        {{#if editing}}
+        <input type="submit" id="deleteBtn" class="btn btn-danger btn-block active" value="Delete"></input>
+        {{/if}}
 
-          $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
-          $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')
-          
-        };
-        var r = $('#R').slider()
-        .on('slide', RGBChange)
-        .data('slider');
-      </script>
+      </form>
+    </div>
 
-    </body>
-  </html>
+    <script>
+      var RGBChange = function() {
+        var currVal = r.getValue();
+
+        if (currVal > 50) {
+          var red = 255
+          var green = 255 - ((currVal - 50) * 5);
+          var blue = 0;
+        } else {
+          var red = currVal * 5;
+          var green = 255;
+          var blue = 0;
+        }
+
+        $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
+        $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')
+
+      };
+      var r = $('#R').slider()
+      .on('slide', RGBChange)
+      .data('slider');
+    </script>
+
+  </body>
+</html>

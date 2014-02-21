@@ -13,12 +13,21 @@
     <link href="bootstrap.css" rel="stylesheet">
     <link href="bootstrap-switch.css" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
+    <link href="css/switch.css" rel="stylesheet">
 
     <!-- JavaScript -->
     <script src="js/apple-mobile-webapp.js" ></script>
+
+    <!-- jQuery -->
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+
   </head>
   <body>
-      <h2> Settings </h2>
+
+    <script src="jquery.js"></script>
+
+    <h2> Settings </h2>
 
     <!-- footer -->
     <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
@@ -43,52 +52,58 @@
     </nav>
 
 
-      <div class="container">
+    <div class="container">
+    </br>
+
+    <form role="form">
+      <div class="form-group">
+        <label for="myonoffswitch" style="margin-left: 10px; margin-top: 5px;">Reminders</label>
+        <div class="onoffswitch" style="margin-left: 10px;"> 
+          <input type="checkbox" onclick = "showMore()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch"> 
+              <div class="onoffswitch-inner"></div>
+              <div class="onoffswitch-switch"></div>
+          </label>
+      </div>
+
+      <div class = "toHide" style="margin-left: 10px;">
+        <label class="checkbox"> <input type="checkbox"> Food </label>
+        <label class="checkbox"> <input type="checkbox"> Sleep </label>
+        <label class="checkbox"> <input type="checkbox"> Exercise </label>
+      </div>
 
       <form role="form">
-        <div class="form-group">
+      <div class = "toHide">
+        <div class="form-group email" style = "margin-bottom: 0px;">
           <label for="inputEmail">Email address</label>
           <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
         </div>
+      </div>
 
-      <form role="form">
-        <div class="form-group">
+    <form role="form">
+      <div class = "toHide">
+        <div class="form-group phone" style = "margin-bottom: 0px;">
           <label for="inputPhone">Phone </label>
           <input type="tel" class="form-control" id="inputPhone" placeholder="Enter phone number">
         </div>
-
-        <div class="control-group">
-          <div class="controls">
-            <label for="yes"> Reminders </label>
-            <div class="radio">
-              <label>
-                <input type="radio" name="optionsRadios" id="yes" value="option1" checked> Yes
-              </label>
-            </div>
-            <div class="radio">
-            <label>
-              <input type="radio" name="optionsRadios" id="no" value="option2"> No
-            </label>
-            </div>
-
-          <label class="checkbox"> <input type="checkbox"> Food </label>
-          <label class="checkbox"> <input type="checkbox"> Sleep </label>
-          <label class="checkbox"> <input type="checkbox"> Exercise </label>
-
-          </div>
-        </div>
-        </br>
-        <button type="submit" class="btn btn-primary">Save Settings</button>
-
-    <!-- <script>
-        if(document.getElementById("no").checked) {
-          $('li.choices').hide();
-          console.log('ALKJDHSLKJDH');
-        }
-      </script> -->
-
       </div>
 
+      <script>
+      function showMore() {
+        if ($('#myonoffswitch').is(":checked")) {
+          $('.toHide').show('slow');
+        } else {
+          $('.toHide').hide('slow');
+        }
+      }
+      </script>
+
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg btn-block active">Save Settings</button>
+    </div>
+    </br>
+
+    </div>
 
     <!-- JavaScript -->
     <script src="js/jquery-1.11.0.js"></script>

@@ -1,5 +1,7 @@
 exports.view = function(req, res) {
-  res.render('signup');
+  var options = {};
+  if (req.query.nameinuse) options.name_in_use = true;
+  res.render('signup', options);
 };
 
 var models = require('../models');
@@ -20,10 +22,10 @@ exports.signup = function(req, res) {
           console.log(err);
           res.send(500);
         }
-        res.redirect('/'); //TODO: say successfully added
+        res.redirect('/signin?usercreated=1');
       };
     } else {
-      res.redirect('signup'); //TODO: say that name is in use
+      res.redirect('signup?nameinuse=1');
     }
   });
 };
