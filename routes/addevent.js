@@ -2,6 +2,7 @@ exports.view = function(req, res) {
   res.render('addevent', {'title':'Add Event', 'buttontext':'Add Event to Calendar'});
 };
 
+
 var models = require('../models');
 
 exports.addevent = function(req, res) {

@@ -18,7 +18,7 @@
     <script src="js/bootstrap-slider.js"></script>
     <script src="js/apple-mobile-webapp.js" ></script>
   </head>
-  
+
   <body>
     <script src="jquery.js"></script>
 
@@ -44,8 +44,21 @@
           </div>
 
           <br/>
-          <input type="submit" id="submitBtn" class="btn btn-primary" value="{{ buttontext}}"></input>
+          <input type="submit" id="submitBtn" class="btn btn-primary pull-left" value="{{ buttontext}}"></input>
           <a href="../" id="cancelBtn" class="btn btn-default pull-right" role="button">Cancel</a>
+          <input type="submit" id="deleteBtn" class="btn btn-danger btn-block active" value="Delete"></input>
+
+          <script>
+          $(document).ready(function(){
+            if(window.location.pathname.match(/editevent/)) {
+              $("#deleteBtn").show();
+            }
+            else{
+              $("#deleteBtn").hide();
+             }
+           });
+          </script>
+
         </form>
       </div>
 
