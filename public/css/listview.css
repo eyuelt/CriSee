@@ -39,3 +39,10 @@ a.btn-block {
 button {
   text-align: right;
 }
+
+#event {
+  margin: 0px;
+  border-radius: 0px;
+  text-align: left;
+  padding-left: 10px;
+}

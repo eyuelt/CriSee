@@ -18,6 +18,7 @@ var models = require('../models');
 exports.listview = function(req, res) {
   models.Event.find({ 'user_id': req.cookies.user_id }).exec(function(err, events) {
     if (err) { console.log(err); res.send(500); }
+    //events.deadline = new Date(events.deadline).toDateString();
     res.render('listview', { 'events': events } );
   });
 };
