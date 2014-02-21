@@ -139,9 +139,13 @@ function createListOfEventsForDay(datestr) {
     }
   };
   function addEventToTable(event) {
-    var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
-    cell.className = "listview-elem";
-    cell.appendChild(document.createTextNode(event.description));
+    var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td")).appendChild(document.createElement("a"));
+    cell.href = "/editevent";
+    cell.className = "btn btn-default btn-block";
+    cell.id="event";
+    cell.setAttribute("role", "button");
+    var text = document.createTextNode(event.description);
+    cell.appendChild(text);
   };
 }
 
