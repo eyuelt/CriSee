@@ -1,18 +1,25 @@
+var models = require('../models');
+var ObjectId = require('mongoose').Types.ObjectId;
+
 exports.view = function(req, res) {
   if (req.query.id) {
     var options = {};
     options.editing = true;
     options.id = req.query.id;
     if (req.query.missingfields) options.missing_fields = true;
-    options.date = unformatDate(new Date().toDateString());
-    res.render('addevent', options);
+    var search_params = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.query.id)};
+    models.Event.findOne(search_params, function (err, event) {
+      options.eventname = event.description;
+      options.date = unformatDate(new Date(event.deadline).toDateString());
+      options.stresslevel = event.difficulty;
+      if (options.stresslevel > 100) options.stresslevel = 100;
+      if (options.stresslevel === undefined || isNaN(options.stresslevel)) options.stresslevel = 0;
+      res.render('addevent', options);
+    });
   } else {
     res.send(500);
   }
 };
-
-var models = require('../models');
-var ObjectId = require('mongoose').Types.ObjectId;
 
 //TODO: make this actually edit, not just add new
 exports.editevent = function(req, res) {
