@@ -10,6 +10,7 @@ exports.calendarview = function(req, res) {
   var options = {};
   if (req.query.eventadded) options.event_added = true;
   if (req.query.eventedited) options.event_edited = true;
+  if (req.query.eventdeleted) options.event_deleted = true;
   res.render('calendarview', options);
 };
 

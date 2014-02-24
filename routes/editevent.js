@@ -65,3 +65,15 @@ function unformatDate(datestr) {
   if (day < 10) day = "0" + day;
   return year + '-' + month + '-' + day;
 };
+
+exports.deleteevent = function(req, res) {
+    var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.query.id)};
+    models.Event.find(search_options).remove().exec(function (err, event) {
+      if (err) {
+        console.log(err);
+        res.send(500);
+      } else {
+        res.redirect('/calendar?eventdeleted=1');
+      }
+    });
+};

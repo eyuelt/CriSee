@@ -78,6 +78,12 @@
         <center><strong>Event edited</strong></center>
       </div>
       {{/if}}
+      {{#if event_deleted}}
+      <div id="event-deleted" class="alert alert-success alert-dismissable" style="margin-top:20px;">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <center><strong>Event deleted</strong></center>
+      </div>
+      {{/if}}
 
        <script>
         setTimeout(function(){
