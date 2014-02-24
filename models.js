@@ -2,7 +2,8 @@ var Mongoose = require('mongoose');
 
 var UserSchema = new Mongoose.Schema({
   "username": String,
-  "password": String
+  "salt": String,
+  "key": String
 });
 
 var EventSchema = new Mongoose.Schema({

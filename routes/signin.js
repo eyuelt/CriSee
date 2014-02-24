@@ -1,4 +1,9 @@
 var models = require('../models');
+var crypto = require('crypto');
+
+var KDF_NUM_ITERS = 100000;
+var KDF_KEY_SZ = 256;
+var SALT_NUM_BYTES = 16;
 
 exports.viewSignin = function(req, res) {
   var options = {};
@@ -30,15 +35,25 @@ exports.signin = function(req, res) {
 function checkLogin(username, password, callback) {
   models.User.find({ "username": username }).exec(function(err, users) {
     if (err) { console.log(err); res.send(500); };
-    if (users.length === 1 && users[0].password === password) callback(true, users[0]._id);
-    else callback(false);
+    if (users.length === 1) {
+      var user = users[0];
+      var key = crypto.pbkdf2Sync(password, user.salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
+      if (user.key === key) {
+        callback(true, user._id);
+      } else {
+        callback(false);
+      }
+    } else callback(false);
   });
 };
 
 exports.signup = function(req, res) {
+  var salt = crypto.randomBytes(SALT_NUM_BYTES).toString('hex');
+  var key = crypto.pbkdf2Sync(req.body.password, salt, KDF_NUM_ITERS, KDF_KEY_SZ).toString('hex');
   var newUser = new models.User({
     "username": req.body.username,
-    "password": req.body.password
+    "salt": salt,
+    "key": key
   });
 
   models.User.find({ "username": newUser.username }).exec(function(err, users) { //make sure username is unique
