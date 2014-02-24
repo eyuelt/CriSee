@@ -2,13 +2,14 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
-var index = require('./routes/index');
+var mongoose = require('mongoose');
+
 var signin = require('./routes/signin');
+var index = require('./routes/index');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
 var events = require('./routes/events');
 var colors = require('./routes/colors');
-var mongoose = require('mongoose');
 
 // Connect to the Mongo database, whether locally or on Heroku
 var local_database_name = 'CriSee';
@@ -43,7 +44,7 @@ app.get('/signin', signin.viewSignin);
 app.post('/signin', signin.signin);
 app.get('/signup', signin.viewSignup);
 app.post('/signup', signin.signup);
-app.get('/logout', signin.signout);
+app.get('/signout', signin.signout);
 app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
