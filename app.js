@@ -2,7 +2,6 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
-var signup = require('./routes/signup');
 var index = require('./routes/index');
 var signin = require('./routes/signin');
 var help = require('./routes/help');
@@ -40,11 +39,11 @@ if ('development' == app.get('env')) {
 
 // Add routes here
 app.get('/', index.view);
-app.get('/signin', signin.view);
-app.post('/signin', signin.login);
-app.get('/signup', signup.view);
-app.post('/signup', signup.signup);
-app.get('/logout', signin.logout);
+app.get('/signin', signin.viewSignin);
+app.post('/signin', signin.signin);
+app.get('/signup', signin.viewSignup);
+app.post('/signup', signin.signup);
+app.get('/logout', signin.signout);
 app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
