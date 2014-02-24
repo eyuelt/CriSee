@@ -7,8 +7,6 @@ var index = require('./routes/index');
 var signin = require('./routes/signin');
 var help = require('./routes/help');
 var settings = require('./routes/settings');
-var addevent = require('./routes/addevent');
-var editevent = require('./routes/editevent');
 var events = require('./routes/events');
 var colors = require('./routes/colors');
 var mongoose = require('mongoose');
@@ -51,13 +49,13 @@ app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
-app.get('/addevent', addevent.view);
-app.post('/addevent', addevent.addevent);
-app.get('/editevent', editevent.view);
-app.post('/editevent', editevent.editevent);
+app.get('/addevent', events.viewAddevent);
+app.post('/addevent', events.addevent);
+app.get('/editevent', events.viewEditevent);
+app.post('/editevent', events.editevent);
 app.get('/events', events.getEvents);
 app.get('/colors', colors.getColors);
-app.get('/delete', editevent.deleteevent);
+app.get('/delete', events.deleteevent);
 // not yet implemented
 //app.get('/search', );
 
