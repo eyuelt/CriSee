@@ -20,7 +20,7 @@
   </head>
 
   <body>
-    <h2>Add Event</h2>
+    <h2>Edit Event</h2>
 
     <div class="container">
       <br/>
@@ -33,7 +33,7 @@
       </div>
       {{/if}}
 
-      <form role="form" method="post" action="/addevent">
+      <form role="form" method="post" action="/editevent">
         <input type="hidden" id="id" name="id" value="{{ id }}"></input>
         <div class="form-group">
           <label for="eventName">Event Name</label>
@@ -51,8 +51,10 @@
 
 
         <br/>
-        <input type="submit" id="submitBtn" class="btn btn-primary" value="Add Event to Calendar"></input>
+        <input type="submit" id="submitBtn" class="btn btn-primary" value="Save"></input>
         <a href="../" id="cancelBtn" class="btn btn-default pull-right" role="button">Cancel</a>
+
+        <input type="submit" id="deleteBtn" class="btn btn-danger btn-block" value="Delete"></input>
 
       </form>
     </div>

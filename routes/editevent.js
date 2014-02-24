@@ -14,14 +14,13 @@ exports.view = function(req, res) {
       options.stresslevel = event.difficulty;
       if (options.stresslevel > 100) options.stresslevel = 100;
       if (options.stresslevel === undefined || isNaN(options.stresslevel)) options.stresslevel = 0;
-      res.render('addevent', options);
+      res.render('editevent', options);
     });
   } else {
     res.send(500);
   }
 };
 
-//TODO: make this actually edit, not just add new
 exports.editevent = function(req, res) {
   var description = req.body.description;
   var deadline = req.body.deadline;
