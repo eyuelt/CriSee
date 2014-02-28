@@ -6,6 +6,7 @@ exports.viewAddevent = function(req, res) {
   if (req.query.missingfields) options.missing_fields = true;
   if (req.query.date) options.date = unformatDate(req.query.date);
   else options.date = unformatDate(new Date().toDateString());
+  options.monochromatic = req.query.monochromatic ? 1 : 0;
   res.render('addevent', options);
 };
 
@@ -22,6 +23,7 @@ exports.viewEditevent = function(req, res) {
       options.stresslevel = event.difficulty;
       if (options.stresslevel > 100) options.stresslevel = 100;
       if (options.stresslevel === undefined || isNaN(options.stresslevel)) options.stresslevel = 0;
+      options.monochromatic = req.query.monochromatic ? 1 : 0;
       res.render('editevent', options);
     });
   } else {

@@ -61,15 +61,24 @@
       var RGBChange = function() {
         var currVal = r.getValue();
 
-        if (currVal > 50) {
-          var red = 255
-          var green = 255 - ((currVal - 50) * 5);
-          var blue = 0;
-        } else {
-          var red = currVal * 5;
-          var green = 255;
-          var blue = 0;
-        }
+        {{#if monochromatic}}
+          var red = 245;
+          var green = (100 - currVal) * 2.5;
+          var blue = (100 - currVal) * 2.5;
+          red = parseInt(red.toFixed(0));
+          green = parseInt(green.toFixed(0));
+          blue = parseInt(blue.toFixed(0));
+        {{else}}
+          if (currVal > 50) {
+            var red = 255
+            var green = 255 - ((currVal - 50) * 5);
+            var blue = 0;
+          } else {
+            var red = currVal * 5;
+            var green = 255;
+            var blue = 0;
+          }
+        {{/if}}
 
         $('#RC .slider-selection').css('background', 'rgb('+ red +','+ green +','+ blue +')')
         $('#RC .slider-handle').css('background', 'rgb('+ red +','+ green +','+ blue +')')

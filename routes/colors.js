@@ -103,9 +103,9 @@ function colorForVal(val) {
 };
 
 function rgbToColorString(r, g, b) {
-  r = parseInt(r.toFixed(0))
-  g = parseInt(g.toFixed(0))
-  b = parseInt(b.toFixed(0))
+  r = parseInt(r.toFixed(0));
+  g = parseInt(g.toFixed(0));
+  b = parseInt(b.toFixed(0));
   return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 };
 
