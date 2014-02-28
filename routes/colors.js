@@ -3,6 +3,8 @@ var ObjectId = require('mongoose').Types.ObjectId;
 
 var NUM_DAYS_TRAIL_BACK = 5; //event difficulty only trails back 5 days for now
 
+var monochromatic = false;
+
 exports.getColors = function(req, res) {
   var monthyear = undefined;
 
@@ -79,14 +81,21 @@ function colorForVal(val) {
   //if (percentVal === undefined || isNaN(percentVal)) percentVal = 0;
 
   var red, green, blue;
-  if (percentVal > 50) {
-    red = 255;
-    green = 255 - ((percentVal - 50) * 5);
-    blue = 0;
-  } else {
-    red = percentVal * 5;
-    green = 255;
-    blue = 0;
+  if (!monochromatic) { // For A/B testing
+    if (percentVal > 50) {
+      red = 255;
+      green = 255 - ((percentVal - 50) * 5);
+      blue = 0;
+    } else {
+      red = percentVal * 5;
+      green = 255;
+      blue = 0;
+    }
+  } else { // For A/B testing
+    //red = 255 - ((percentVal) * 2.5);
+    red = 245;
+    green = (100 - percentVal) * 2.5;
+    blue = (100 - percentVal) * 2.5;
   }
   var colorString = rgbToColorString(red, green, blue);
   return colorString;
