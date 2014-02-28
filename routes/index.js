@@ -28,6 +28,9 @@ exports.listview = function(req, res) {
       e[i].deadline = new Date(events[i].deadline).toDateString();
       console.log(e[i])
     }
-    res.render('listview', { 'events': e } );
+    var options = {};
+    options.events = e;
+    options.monochromatic = req.query.monochromatic ? 1 : 0;
+    res.render('listview', options );
   });
 };

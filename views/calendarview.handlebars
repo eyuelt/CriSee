@@ -30,7 +30,11 @@
           <a class="btn btn-default active" role="button">
             <span class="glyphicon glyphicon-calendar"></span> Calendar View
           </a>
+          {{#if monochromatic}}
+          <a class="btn btn-default" role="button" href="/list?monochromatic=1">
+          {{else}}
           <a class="btn btn-default" role="button" href="/list">
+          {{/if}}
             <span class="glyphicon glyphicon-list"></span> List View
           </a>
         </div>
@@ -121,7 +125,11 @@
           var datearr = monthyear.split(' ');
           datearr.splice(1,0,day);
           var fulldate = datearr.join(' ');
-          $(this).attr("href", this.href + "?date=" + fulldate);
+          var monoParam = '';
+          {{#if monochromatic}}
+            monoParam = '&monochromatic=1';
+          {{/if}}
+          $(this).attr("href", this.href + "?date=" + fulldate + monoParam);
       });
     </script>
   </body>

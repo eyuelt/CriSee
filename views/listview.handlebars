@@ -22,10 +22,18 @@
     <div class="container-fluid">
       <div class="navbar-header">
         <div class="btn-group btn-group-justified">
+          {{#if monochromatic}}
+          <a class="btn btn-default" role="button" href="/calendar?monochromatic=1">
+          {{else}}
           <a class="btn btn-default" role="button" href="/calendar">
+          {{/if}}
             <span class="glyphicon glyphicon-calendar"></span> Calendar View
           </a>
+          {{#if monochromatic}}
+          <a class="btn btn-default active" role="button" href="/list?monochromatic=1">
+          {{else}}
           <a class="btn btn-default active" role="button" href="/list">
+          {{/if}}
             <span class="glyphicon glyphicon-list"></span> List View
           </a>
         </div>
@@ -57,17 +65,31 @@
 
     <div class="container">
       <div class="listview">
-        <a href="/addevent" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
+
+        {{#if monochromatic}}
+          <a href="/addevent?monochromatic=1" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
+        {{else}}
+          <a href="/addevent" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
+        {{/if}}
+
         <table>
+        {{#if monochromatic}}
           {{#each events}}
-          <tr>
-            <td class>
-              <a href="/editevent?id={{_id}}" class = "btn btn-default btn-lg btn-block active" id = "event"> <b>{{description}}</b> <span style="color:grey;">{{deadline}}</span> </a>
+          <tr><td class>
+              <a href="/editevent?id={{_id}}&monochromatic=1" class="btn btn-default btn-lg btn-block active" id="event"> <b>{{description}}</b> <span style="color:grey;">{{deadline}}</span> </a>
             <!-- <td class="listview-elem">
               <a href="/editevent?id={{_id}}">{{description}} </a> -->
-            </td>
-          </tr>
+          </td></tr>
           {{/each}}
+        {{else}}
+          {{#each events}}
+          <tr><td class>
+              <a href="/editevent?id={{_id}}" class="btn btn-default btn-lg btn-block active" id="event"> <b>{{description}}</b> <span style="color:grey;">{{deadline}}</span> </a>
+            <!-- <td class="listview-elem">
+              <a href="/editevent?id={{_id}}">{{description}} </a> -->
+          </td></tr>
+          {{/each}}
+        {{/if}}
         </table>
       </div>
 

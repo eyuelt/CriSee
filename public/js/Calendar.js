@@ -140,7 +140,8 @@ function createListOfEventsForDay(datestr) {
   };
   function addEventToTable(event) {
     var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td")).appendChild(document.createElement("a"));
-    cell.href = "/editevent?id="+event._id;
+    var monoParam = monochromatic ? 'monochromatic='+monochromatic : '';
+    cell.href = "/editevent?id="+event._id+'&'+monoParam;
     cell.className = "btn btn-default btn-lg btn-block active";
     cell.id = "event";
     var text = document.createTextNode(event.description);
