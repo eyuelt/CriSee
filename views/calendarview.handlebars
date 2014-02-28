@@ -109,6 +109,7 @@
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/Calendar.js"></script>
     <script type="text/javascript">
+      monochromatic = {{ monochromatic }};
       var cal = new Calendar("cal");
       cal.render(new Date());
       $('td.thisMonth')[new Date().getDate()-1].click();

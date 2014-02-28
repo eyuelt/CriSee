@@ -7,6 +7,7 @@ var monochromatic = false;
 
 exports.getColors = function(req, res) {
   var monthyear = undefined;
+  monochromatic = req.query.monochromatic;
 
   if (req.query.monthyear !== undefined) {
     monthyear = req.query.monthyear;

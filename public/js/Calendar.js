@@ -158,7 +158,8 @@ function createListOfEventsForDay(datestr) {
 
 function colorCalendar() {
   var monthyear = $("#monthyear")[0].innerText;
-  $.get('/colors/?monthyear='+monthyear, function(result) {
+  var monoParam = monochromatic ? 'monochromatic='+monochromatic : '';
+  $.get('/colors/?monthyear='+monthyear+'&'+monoParam, function(result) {
     //apply colors to calendar
     var boxes = $('td.thisMonth');
     for (var i = 0; i < boxes.length; i++) {

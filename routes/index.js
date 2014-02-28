@@ -11,6 +11,7 @@ exports.calendarview = function(req, res) {
   if (req.query.eventadded) options.event_added = true;
   if (req.query.eventedited) options.event_edited = true;
   if (req.query.eventdeleted) options.event_deleted = true;
+  options.monochromatic = req.query.monochromatic ? 1 : 0;
   res.render('calendarview', options);
 };
 
