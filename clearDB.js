@@ -15,14 +15,26 @@ var local_database_uri  = 'mongodb://localhost/' + local_database_name
 var database_uri = process.env.MONGOLAB_URI || local_database_uri
 mongoose.connect(database_uri);
 
+
 // Remove all users
 models.User
   .find()
   .remove()
-  .exec();
+  .exec(onceClear);
 
 // Remove all events
 models.Event
   .find()
   .remove()
-  .exec();
+  .exec(onceClear);
+
+
+// Keep track of how many calls to remove have completed
+var finishedCount = 0;
+
+// Close connection when both removes are done
+function onceClear(err) {
+  if(err) console.log(err);
+  finishedCount++;
+  if (finishedCount >= 2) mongoose.connection.close()
+}
