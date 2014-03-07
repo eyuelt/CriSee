@@ -10,6 +10,7 @@ var help = require('./routes/help');
 var settings = require('./routes/settings');
 var events = require('./routes/events');
 var colors = require('./routes/colors');
+var sms = require('./routes/sms');
 
 // Connect to the Mongo database, whether locally or on Heroku
 var local_database_name = 'CriSee';
@@ -56,6 +57,7 @@ app.post('/editevent', events.editevent);
 app.get('/events', events.getEvents);
 app.get('/colors', colors.getColors);
 app.get('/delete', events.deleteevent);
+app.get('/sms', sms.sendText);
 // not yet implemented
 //app.get('/search', );
 
