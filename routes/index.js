@@ -11,7 +11,8 @@ exports.calendarview = function(req, res) {
   if (req.query.eventadded) options.event_added = true;
   if (req.query.eventedited) options.event_edited = true;
   if (req.query.eventdeleted) options.event_deleted = true;
-  options.monochromatic = req.query.monochromatic ? 1 : 0;
+  //options.monochromatic = req.query.monochromatic ? 1 : 0;
+  options.monochromatic = 1;
   res.render('calendarview', options);
 };
 
@@ -30,7 +31,8 @@ exports.listview = function(req, res) {
     }
     var options = {};
     options.events = e;
-    options.monochromatic = req.query.monochromatic ? 1 : 0;
+    //options.monochromatic = req.query.monochromatic ? 1 : 0;
+    options.monochromatic = 1;
     res.render('listview', options );
   });
 };
