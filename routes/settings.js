@@ -5,7 +5,22 @@ exports.view = function(req, res) {
   if (!req.cookies.user_id) {
     res.redirect('/signin');
   } else {
-    res.render('settings');
+    var options = {};
+    options.reminders = 'checked';
+
+    var search_params = {'user_id':ObjectId(req.cookies.user_id)};
+    models.Settings.findOne(search_params, function(err, settings) {
+      if (settings !== null) {
+        if (!settings.reminders) options.reminders = '';
+        if (settings.food) options.food = 'checked';
+        if (settings.sleep) options.sleep = 'checked';
+        if (settings.exercise) options.exercise = 'checked';
+        if (settings.phone && settings.phone.toString().length === 10) {
+          options.phone = settings.phone;
+        }
+      }
+      res.render('settings', options);
+    });
   }
 };
 

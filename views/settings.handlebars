@@ -52,7 +52,7 @@
       <div class="form-group">
         <label for="myonoffswitch" style="margin-left: 10px; margin-top: 5px;">Reminders</label>
         <div class="onoffswitch" style="margin-left: 10px;">
-          <input type="checkbox" onclick = "showMore()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <input type="checkbox" onclick = "showMore()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" {{reminders}}>
           <label class="onoffswitch-label" for="myonoffswitch">
               <div class="onoffswitch-inner"></div>
               <div class="onoffswitch-switch"></div>
@@ -60,16 +60,16 @@
       </div>
 
       <div class="toHide form-group" style="margin:10px;">
-        <label class="checkbox"><input type="checkbox" name="food">Food</label>
-        <label class="checkbox"><input type="checkbox" name="sleep">Sleep</label>
-        <label class="checkbox"><input type="checkbox" name="exercise">Exercise</label>
+        <label class="checkbox"><input type="checkbox" name="food" {{food}}>Food</label>
+        <label class="checkbox"><input type="checkbox" name="sleep" {{sleep}}>Sleep</label>
+        <label class="checkbox"><input type="checkbox" name="exercise" {{exercise}}>Exercise</label>
       </div>
 
     <form role="form">
       <div class="toHide">
         <div class="form-group phone" style="margin-bottom:0px;">
           <label for="inputPhone">Phone</label>
-          <input type="tel" name="phone" class="form-control" id="inputPhone" placeholder="Enter phone number">
+          <input type="tel" name="phone" class="form-control" id="inputPhone" placeholder="Enter phone number" value="{{phone}}">
         </div>
       </div>
 
@@ -81,6 +81,12 @@
           $('.toHide').hide('slow');
         }
       }
+      </script>
+
+      <script>
+        $(document).ready(function() {
+          if ('{{reminders}}' !== 'checked') showMore();
+        });
       </script>
 
       </div>
