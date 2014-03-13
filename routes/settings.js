@@ -10,13 +10,18 @@ exports.view = function(req, res) {
 };
 
 exports.save = function(req, res) {
+  var phoneNumber = null;
+  if (req.body.phone.length === 10 && !isNaN(parseInt(req.body.phone))) {
+    phoneNumber = parseInt(req.body.phone);
+  }
+
   var newSettings = new models.Settings({
     "user_id": req.cookies.user_id,
     "reminders": (req.body.onoffswitch) ? true : false,
     "food": (req.body.food) ? true : false,
     "sleep": (req.body.sleep) ? true : false,
     "exercise": (req.body.exercise) ? true : false,
-    "phone": (!isNaN(parseInt(req.body.phone))) ? parseInt(req.body.phone) : null
+    "phone": phoneNumber
   });
 
   var search_options = {'user_id':ObjectId(req.cookies.user_id)};
