@@ -140,8 +140,7 @@ function createListOfEventsForDay(datestr) {
   };
   function addEventToTable(event) {
     var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td")).appendChild(document.createElement("a"));
-    var monoParam = monochromatic ? 'monochromatic='+monochromatic : '';
-    cell.href = "/editevent?id="+event._id+'&'+monoParam;
+    cell.href = "/editevent?id="+event._id;
     cell.className = "btn btn-default btn-lg btn-block active";
     cell.id = "event";
     var text = document.createTextNode(event.description);
@@ -159,8 +158,7 @@ function createListOfEventsForDay(datestr) {
 
 function colorCalendar() {
   var monthyear = $("#monthyear")[0].innerHTML;
-  var monoParam = monochromatic ? 'monochromatic='+monochromatic : '';
-  $.get('/colors/?monthyear='+monthyear+'&'+monoParam, function(result) {
+  $.get('/colors/?monthyear='+monthyear, function(result) {
     //apply colors to calendar
     var boxes = $('td.thisMonth');
     for (var i = 0; i < boxes.length; i++) {

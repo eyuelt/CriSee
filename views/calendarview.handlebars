@@ -30,11 +30,7 @@
           <a class="btn btn-default active" role="button">
             <span class="glyphicon glyphicon-calendar"></span> Calendar View
           </a>
-          {{#if monochromatic}}
-          <a class="btn btn-default" role="button" href="/list?monochromatic=1">
-          {{else}}
           <a class="btn btn-default" role="button" href="/list">
-          {{/if}}
             <span class="glyphicon glyphicon-list"></span> List View
           </a>
         </div>
@@ -110,7 +106,6 @@
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/Calendar.js"></script>
     <script type="text/javascript">
-      monochromatic = {{ monochromatic }};
       var cal = new Calendar("cal");
       cal.render(new Date());
       $('td.thisMonth')[new Date().getDate()-1].click();
@@ -122,11 +117,7 @@
           var datearr = monthyear.split(' ');
           datearr.splice(1,0,day);
           var fulldate = datearr.join(' ');
-          var monoParam = '';
-          {{#if monochromatic}}
-            monoParam = '&monochromatic=1';
-          {{/if}}
-          $(this).attr("href", this.href + "?date=" + fulldate + monoParam);
+          $(this).attr("href", this.href + "?date=" + fulldate);
       });
     </script>
   </body>
