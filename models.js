@@ -14,6 +14,7 @@ var EventSchema = new Mongoose.Schema({
 });
 
 var SettingsSchema = new Mongoose.Schema({
+  "user_id": {type: Mongoose.Schema.ObjectId, ref:'UserSchema'},
   "reminders": Boolean,
   "food": Boolean,
   "sleep": Boolean,
