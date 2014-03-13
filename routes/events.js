@@ -2,80 +2,96 @@ var models = require('../models');
 var ObjectId = require('mongoose').Types.ObjectId;
 
 exports.viewAddevent = function(req, res) {
-  var options = {};
-  if (req.query.missingfields) options.missing_fields = true;
-  if (req.query.date) options.date = unformatDate(req.query.date);
-  else options.date = unformatDate(new Date().toDateString());
-  res.render('addevent', options);
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
+  } else {
+    var options = {};
+    if (req.query.missingfields) options.missing_fields = true;
+    if (req.query.date) options.date = unformatDate(req.query.date);
+    else options.date = unformatDate(new Date().toDateString());
+    res.render('addevent', options);
+  }
 };
 
 exports.viewEditevent = function(req, res) {
-  if (req.query.id) {
-    var options = {};
-    options.editing = true;
-    options.id = req.query.id;
-    if (req.query.missingfields) options.missing_fields = true;
-    var search_params = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.query.id)};
-    models.Event.findOne(search_params, function (err, event) {
-      options.eventname = event.description;
-      options.date = unformatDate(new Date(event.deadline).toDateString());
-      options.stresslevel = event.difficulty;
-      if (options.stresslevel > 100) options.stresslevel = 100;
-      if (options.stresslevel === undefined || isNaN(options.stresslevel)) options.stresslevel = 0;
-      res.render('editevent', options);
-    });
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
   } else {
-    res.send(500);
+    if (req.query.id) {
+      var options = {};
+      options.editing = true;
+      options.id = req.query.id;
+      if (req.query.missingfields) options.missing_fields = true;
+      var search_params = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.query.id)};
+      models.Event.findOne(search_params, function (err, event) {
+        options.eventname = event.description;
+        options.date = unformatDate(new Date(event.deadline).toDateString());
+        options.stresslevel = event.difficulty;
+        if (options.stresslevel > 100) options.stresslevel = 100;
+        if (options.stresslevel === undefined || isNaN(options.stresslevel)) options.stresslevel = 0;
+        res.render('editevent', options);
+      });
+    } else {
+      res.send(500);
+    }
   }
 };
 
 exports.addevent = function(req, res) {
-  var description = req.body.description;
-  var deadline = req.body.deadline;
-  var difficulty = req.body.difficulty;
-
-  if (description.length > 0 && deadline.length > 0) {
-    deadline = formatDate(deadline);
-    difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-    var newEvent = new models.Event({
-      "user_id": req.cookies.user_id,
-      "description": description,
-      "deadline": deadline,
-      "difficulty": difficulty
-    });
-    newEvent.save(function(err) {
-      if (err) { console.log(err); res.send(500); }
-      console.log('just added: ' + newEvent);
-      res.redirect('/calendar?eventadded=1');
-    });
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
   } else {
-    res.redirect('addevent?missingfields=1'); //TODO: say invalid event
+    var description = req.body.description;
+    var deadline = req.body.deadline;
+    var difficulty = req.body.difficulty;
+
+    if (description.length > 0 && deadline.length > 0) {
+      deadline = formatDate(deadline);
+      difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
+      var newEvent = new models.Event({
+        "user_id": req.cookies.user_id,
+        "description": description,
+        "deadline": deadline,
+        "difficulty": difficulty
+      });
+      newEvent.save(function(err) {
+        if (err) { console.log(err); res.send(500); }
+        console.log('just added: ' + newEvent);
+        res.redirect('/calendar?eventadded=1');
+      });
+    } else {
+      res.redirect('addevent?missingfields=1'); //TODO: say invalid event
+    }
   }
 };
 
 exports.editevent = function(req, res) {
-  var description = req.body.description;
-  var deadline = req.body.deadline;
-  var difficulty = req.body.difficulty;
-  if (description.length > 0 && deadline.length > 0) {
-    deadline = formatDate(deadline);
-    difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-    var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.body.id)};
-    models.Event.findOne(search_options, function (err, event) {
-      if (err) {
-        console.log(err);
-        res.send(500);
-      } else {
-        event.description = description;
-        event.deadline = deadline;
-        event.difficulty = difficulty;
-        event.save(function(err){
-          res.redirect('/calendar?eventedited=1');
-        });
-      }
-    });
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
   } else {
-    res.redirect('editevent?id=' + req.body.id + '&missingfields=1');
+    var description = req.body.description;
+    var deadline = req.body.deadline;
+    var difficulty = req.body.difficulty;
+    if (description.length > 0 && deadline.length > 0) {
+      deadline = formatDate(deadline);
+      difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
+      var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.body.id)};
+      models.Event.findOne(search_options, function (err, event) {
+        if (err) {
+          console.log(err);
+          res.send(500);
+        } else {
+          event.description = description;
+          event.deadline = deadline;
+          event.difficulty = difficulty;
+          event.save(function(err){
+            res.redirect('/calendar?eventedited=1');
+          });
+        }
+      });
+    } else {
+      res.redirect('editevent?id=' + req.body.id + '&missingfields=1');
+    }
   }
 };
 
@@ -99,6 +115,9 @@ function unformatDate(datestr) {
 };
 
 exports.deleteevent = function(req, res) {
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
+  } else {
     var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.query.id)};
     models.Event.find(search_options).remove().exec(function (err, event) {
       if (err) {
@@ -108,22 +127,27 @@ exports.deleteevent = function(req, res) {
         res.redirect('/calendar?eventdeleted=1');
       }
     });
+  }
 };
 
 exports.getEvents = function(req, res) {
-  var search_options = {};
-  search_options.user_id = new ObjectId(req.cookies.user_id);
-  var date = undefined;
-  if (req.query.date !== undefined) {
-    date = new Date(req.query.date);
-    search_options.deadline = date;
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
+  } else {
+    var search_options = {};
+    search_options.user_id = new ObjectId(req.cookies.user_id);
+    var date = undefined;
+    if (req.query.date !== undefined) {
+      date = new Date(req.query.date);
+      search_options.deadline = date;
+    }
+    console.log(search_options);
+    models.Event.find(search_options).exec(function(err, events) { //sort?
+      if (err) { console.log(err); res.send(500); }
+      var result = {};
+      result.date = (date === undefined) ? "All" : date.toDateString();
+      result.events = events;
+      res.json(result);
+    });
   }
-  console.log(search_options);
-  models.Event.find(search_options).exec(function(err, events) { //sort?
-    if (err) { console.log(err); res.send(500); }
-    var result = {};
-    result.date = (date === undefined) ? "All" : date.toDateString();
-    result.events = events;
-    res.json(result);
-  });
 };

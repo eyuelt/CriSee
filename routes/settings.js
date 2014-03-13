@@ -1,5 +1,9 @@
 exports.view = function(req, res) {
-  res.render('settings');
+  if (!req.cookies.user_id) {
+    res.redirect('/signin');
+  } else {
+    res.render('settings');
+  }
 };
 
 
