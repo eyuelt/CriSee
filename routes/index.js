@@ -1,5 +1,5 @@
 exports.view = function(req, res) {
-  if (req.cookies.username) {
+  if (req.cookies.user_id) {
     res.redirect('/calendar');
   } else {
     res.redirect('/signin');

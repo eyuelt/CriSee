@@ -23,7 +23,6 @@ exports.signin = function(req, res) {
     if (isValidLogin) {
       var options = {};
       if (req.body.remember) options = { maxAge: 900000 };
-      res.cookie('username', req.body.username, options);
       res.cookie('user_id', user_id, options);
       res.redirect('/');
     } else {
@@ -75,6 +74,6 @@ exports.signup = function(req, res) {
 };
 
 exports.signout = function(req, res) {
-  res.clearCookie('username');
+  res.clearCookie('user_id');
   res.redirect('/');
 };
