@@ -52,36 +52,28 @@
     <div class="container">
     </br>
 
-    <form role="form">
+    <form role="form" method="post" action="/settings">
       <div class="form-group">
         <label for="myonoffswitch" style="margin-left: 10px; margin-top: 5px;">Reminders</label>
-        <div class="onoffswitch" style="margin-left: 10px;"> 
+        <div class="onoffswitch" style="margin-left: 10px;">
           <input type="checkbox" onclick = "showMore()" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-          <label class="onoffswitch-label" for="myonoffswitch"> 
+          <label class="onoffswitch-label" for="myonoffswitch">
               <div class="onoffswitch-inner"></div>
               <div class="onoffswitch-switch"></div>
           </label>
       </div>
 
-      <div class = "toHide" style="margin-left: 10px;">
-        <label class="checkbox"> <input type="checkbox"> Food </label>
-        <label class="checkbox"> <input type="checkbox"> Sleep </label>
-        <label class="checkbox"> <input type="checkbox"> Exercise </label>
-      </div>
-
-      <form role="form">
-      <div class = "toHide">
-        <div class="form-group email" style = "margin-bottom: 0px;">
-          <label for="inputEmail">Email address</label>
-          <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
-        </div>
+      <div class="toHide form-group" style="margin:10px;">
+        <label class="checkbox"><input type="checkbox" name="food">Food</label>
+        <label class="checkbox"><input type="checkbox" name="sleep">Sleep</label>
+        <label class="checkbox"><input type="checkbox" name="exercise">Exercise</label>
       </div>
 
     <form role="form">
-      <div class = "toHide">
-        <div class="form-group phone" style = "margin-bottom: 0px;">
-          <label for="inputPhone">Phone </label>
-          <input type="tel" class="form-control" id="inputPhone" placeholder="Enter phone number">
+      <div class="toHide">
+        <div class="form-group phone" style="margin-bottom:0px;">
+          <label for="inputPhone">Phone</label>
+          <input type="tel" name="phone" class="form-control" id="inputPhone" placeholder="Enter phone number">
         </div>
       </div>
 
