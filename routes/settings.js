@@ -7,6 +7,7 @@ exports.view = function(req, res) {
   } else {
     var options = {};
     options.reminders = 'checked';
+    if (req.query.saved) options.settings_saved = true;
 
     var search_params = {'user_id':ObjectId(req.cookies.user_id)};
     models.Settings.findOne(search_params, function(err, settings) {

@@ -47,6 +47,19 @@
 
     <div class="container">
     </br>
+    <!-- Alert buttons -->
+    {{#if settings_saved}}
+    <div id="settings-saved" class="alert alert-success alert-dismissable">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <center><strong>Settings saved</strong></center>
+    </div>
+    {{/if}}
+
+     <script>
+      setTimeout(function(){
+        $('.alert.alert-success').delay(3000).fadeOut("slow");
+      });
+    </script>
 
     <form role="form" method="post" action="/settings">
       <div class="form-group">
