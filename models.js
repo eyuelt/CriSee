@@ -13,5 +13,14 @@ var EventSchema = new Mongoose.Schema({
   "difficulty": Number
 });
 
+var SettingsSchema = new Mongoose.Schema({
+  "reminders": Boolean,
+  "food": Boolean,
+  "sleep": Boolean,
+  "exercise": Boolean,
+  "phone": Number
+}):
+
 exports.User = Mongoose.model('User', UserSchema);
 exports.Event = Mongoose.model('Event', EventSchema);
+exports.Settings = Mongoose.model('Settings', SettingsSchema);
