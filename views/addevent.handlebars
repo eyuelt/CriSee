@@ -60,8 +60,10 @@
 
       </form>
     </div>
+
     <script>
       var clicked = false;
+
       $(document).ready(function() {
         var sliderSpan = $('#sliderSpan');
         var slider = $('#R').data('slider');
@@ -69,18 +71,11 @@
         sliderSpan.on('touchstart vmousedown', function(){
           //These events only seem to get sent on the mobile version
           clicked = true;
-          //console.log('[start] clicked is: ' + clicked);
-          //console.log(event.type);
-          //$('#start').val('Touch start');
-          //slider.setValue(100);
-          //RGBChange();
         })
 
         sliderSpan.on('touchmove vmousemove', function(event){
-          //console.log(event.type);
           if (clicked === true && event.type === "vmousemove") {
             var value = (event.clientX - sliderSpan[0].offsetLeft)/3;
-            //console.log('[moved] clicked is: ' + clicked + "  " + value);
             slider.setValue(value);
             RGBChange();
           }
@@ -88,11 +83,6 @@
 
         sliderSpan.on('touchend vmouseup', function(){
           clicked = false;
-          //console.log('[ended] clicked is: ' + clicked);
-          //console.log(event.type);
-          //$('#end').val('Touch end');
-          //slider.setValue(100);
-          //RGBChange();
         });
       });
     </script>
