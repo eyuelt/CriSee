@@ -6,4 +6,7 @@ exports.view = function(req, res) {
   }
 };
 
-
+exports.save = function(req, res) {
+  console.log(req.body);
+  res.redirect('/settings');
+};

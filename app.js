@@ -50,6 +50,7 @@ app.get('/calendar', index.calendarview);
 app.get('/list', index.listview);
 app.get('/help', help.view);
 app.get('/settings', settings.view);
+app.post('/settings', settings.save);
 app.get('/addevent', events.viewAddevent);
 app.post('/addevent', events.addevent);
 app.get('/editevent', events.viewEditevent);
