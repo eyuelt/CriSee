@@ -107,8 +107,8 @@ function addThisMonthListeners() {
     this.style.border = "2px solid black";
     this.style.fontWeight = "bold";
 
-    var day = this.innerText;
-    var monthyear = $("#monthyear")[0].innerText;
+    var day = this.innerHTML;
+    var monthyear = $("#monthyear")[0].innerHTML;
     var datearr = monthyear.split(' ');
     datearr.splice(1,0,day);
     createListOfEventsForDay(datearr.join(' '));
@@ -158,14 +158,14 @@ function createListOfEventsForDay(datestr) {
 }
 
 function colorCalendar() {
-  var monthyear = $("#monthyear")[0].innerText;
+  var monthyear = $("#monthyear")[0].innerHTML;
   var monoParam = monochromatic ? 'monochromatic='+monochromatic : '';
   $.get('/colors/?monthyear='+monthyear+'&'+monoParam, function(result) {
     //apply colors to calendar
     var boxes = $('td.thisMonth');
     for (var i = 0; i < boxes.length; i++) {
       var box = boxes[i];
-      box.style.backgroundColor = result.data[parseInt(box.innerText)-1].color;
+      box.style.backgroundColor = result.data[parseInt(box.innerHTML)-1].color;
     }
   });
 }

@@ -117,8 +117,8 @@
     </script>
     <script type="text/javascript">
       $('a#addeventbtn').click(function(e) {
-          var day = selected.innerText;
-          var monthyear = $("#monthyear")[0].innerText;
+          var day = selected.innerHTML;
+          var monthyear = $("#monthyear")[0].innerHTML;
           var datearr = monthyear.split(' ');
           datearr.splice(1,0,day);
           var fulldate = datearr.join(' ');
