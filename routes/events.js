@@ -38,60 +38,52 @@ exports.viewEditevent = function(req, res) {
 };
 
 exports.addevent = function(req, res) {
-  if (!req.cookies.user_id) {
-    res.redirect('/signin');
-  } else {
-    var description = req.body.description;
-    var deadline = req.body.deadline;
-    var difficulty = req.body.difficulty;
+  var description = req.body.description;
+  var deadline = req.body.deadline;
+  var difficulty = req.body.difficulty;
 
-    if (description.length > 0 && deadline.length > 0) {
-      deadline = formatDate(deadline);
-      difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-      var newEvent = new models.Event({
-        "user_id": req.cookies.user_id,
-        "description": description,
-        "deadline": deadline,
-        "difficulty": difficulty
-      });
-      newEvent.save(function(err) {
-        if (err) { console.log(err); res.send(500); }
-        console.log('just added: ' + newEvent);
-        res.redirect('/calendar?eventadded=1');
-      });
-    } else {
-      res.redirect('addevent?missingfields=1'); //TODO: say invalid event
-    }
+  if (description.length > 0 && deadline.length > 0) {
+    deadline = formatDate(deadline);
+    difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
+    var newEvent = new models.Event({
+      "user_id": req.cookies.user_id,
+      "description": description,
+      "deadline": deadline,
+      "difficulty": difficulty
+    });
+    newEvent.save(function(err) {
+      if (err) { console.log(err); res.send(500); }
+      console.log('just added: ' + newEvent);
+      res.redirect('/calendar?eventadded=1');
+    });
+  } else {
+    res.redirect('addevent?missingfields=1'); //TODO: say invalid event
   }
 };
 
 exports.editevent = function(req, res) {
-  if (!req.cookies.user_id) {
-    res.redirect('/signin');
+  var description = req.body.description;
+  var deadline = req.body.deadline;
+  var difficulty = req.body.difficulty;
+  if (description.length > 0 && deadline.length > 0) {
+    deadline = formatDate(deadline);
+    difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
+    var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.body.id)};
+    models.Event.findOne(search_options, function (err, event) {
+      if (err) {
+        console.log(err);
+        res.send(500);
+      } else {
+        event.description = description;
+        event.deadline = deadline;
+        event.difficulty = difficulty;
+        event.save(function(err){
+          res.redirect('/calendar?eventedited=1');
+        });
+      }
+    });
   } else {
-    var description = req.body.description;
-    var deadline = req.body.deadline;
-    var difficulty = req.body.difficulty;
-    if (description.length > 0 && deadline.length > 0) {
-      deadline = formatDate(deadline);
-      difficulty = (difficulty.length > 0) ? parseFloat(difficulty) : 0.0;
-      var search_options = {'user_id':ObjectId(req.cookies.user_id), '_id':ObjectId(req.body.id)};
-      models.Event.findOne(search_options, function (err, event) {
-        if (err) {
-          console.log(err);
-          res.send(500);
-        } else {
-          event.description = description;
-          event.deadline = deadline;
-          event.difficulty = difficulty;
-          event.save(function(err){
-            res.redirect('/calendar?eventedited=1');
-          });
-        }
-      });
-    } else {
-      res.redirect('editevent?id=' + req.body.id + '&missingfields=1');
-    }
+    res.redirect('editevent?id=' + req.body.id + '&missingfields=1');
   }
 };
 
