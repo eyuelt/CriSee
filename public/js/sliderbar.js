@@ -25,6 +25,7 @@ $(document).ready(function() {
 
   r.setValue(stresslevel);
   RGBChange();
+  $('#sliderSpan')[0].style.visibility = "visible";
 
 
   /** Allow dragging for mobile **/
