@@ -19,7 +19,7 @@ var SettingsSchema = new Mongoose.Schema({
   "sleep": Boolean,
   "exercise": Boolean,
   "phone": Number
-}):
+});
 
 exports.User = Mongoose.model('User', UserSchema);
 exports.Event = Mongoose.model('Event', EventSchema);
