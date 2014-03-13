@@ -48,7 +48,7 @@
         </div>
         <div class="form-group">
           <label for="R">Stress Level</label><br/>
-          <span id="sliderSpan">
+          <span id="sliderSpan" class="notSelectable">
             <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
           </span>
         </div>
@@ -83,6 +83,26 @@
 
         sliderSpan.on('touchend vmouseup', function(){
           clicked = false;
+        });
+
+
+        //Disable selection of sliderbar
+        $(document).ready(function(){
+          $('.notSelectable').disableSelection();
+        });
+        // This jQuery Plugin will disable text selection for Android and iOS devices.
+        // Stackoverflow Answer: http://stackoverflow.com/a/2723677/1195891
+        $.fn.extend({
+          disableSelection: function() {
+            this.each(function() {
+              this.onselectstart = function() {
+                return false;
+              };
+              this.unselectable = "on";
+              $(this).css('-moz-user-select', 'none');
+              $(this).css('-webkit-user-select', 'none');
+            });
+          }
         });
       });
     </script>
