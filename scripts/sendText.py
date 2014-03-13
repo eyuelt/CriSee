@@ -1,5 +1,9 @@
-import pexpect
+#Add the pexpect directory to our PYTHONPATH so we
+#can use the module without installing it
 import sys
+sys.path.append("../python_modules/pexpect-master")
+
+import pexpect
 import os
 
 def main(number, message):

@@ -1,3 +1,8 @@
+#Add the pygooglevoice directory to our PYTHONPATH so we
+#can use the googlevoice module without installing it
+import sys
+sys.path.append("../python_modules/pygooglevoice-0.5")
+
 from googlevoice import Voice
 from googlevoice.util import input
 
