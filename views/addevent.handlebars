@@ -14,6 +14,8 @@
 
     <!-- JavaScript -->
     <script src="js/jquery-1.11.0.js"></script>
+    <script src="js/jquery.mobile.custom.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/bootstrap-slider.js"></script>
     <script src="js/apple-mobile-webapp.js" ></script>
@@ -46,7 +48,9 @@
         </div>
         <div class="form-group">
           <label for="R">Stress Level</label><br/>
-          <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
+          <span id="sliderSpan" style="display:inline-block">
+            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="1" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round" name="difficulty"></input>
+          </span>
         </div>
 
 
@@ -56,6 +60,42 @@
 
       </form>
     </div>
+    <script>
+      var clicked = false;
+      $(document).ready(function() {
+        var sliderSpan = $('#sliderSpan');
+        var slider = $('#R').data('slider');
+
+        sliderSpan.on('touchstart vmousedown', function(){
+          //These events only seem to get sent on the mobile version
+          clicked = true;
+          //console.log('[start] clicked is: ' + clicked);
+          //console.log(event.type);
+          //$('#start').val('Touch start');
+          //slider.setValue(100);
+          //RGBChange();
+        })
+
+        sliderSpan.on('touchmove vmousemove', function(event){
+          //console.log(event.type);
+          if (clicked === true && event.type === "vmousemove") {
+            var value = (event.clientX - sliderSpan[0].offsetLeft)/3;
+            //console.log('[moved] clicked is: ' + clicked + "  " + value);
+            slider.setValue(value);
+            RGBChange();
+          }
+        })
+
+        sliderSpan.on('touchend vmouseup', function(){
+          clicked = false;
+          //console.log('[ended] clicked is: ' + clicked);
+          //console.log(event.type);
+          //$('#end').val('Touch end');
+          //slider.setValue(100);
+          //RGBChange();
+        });
+      });
+    </script>
 
     <script>
       var RGBChange = function() {
