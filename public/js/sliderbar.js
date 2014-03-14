@@ -40,7 +40,7 @@ $(document).ready(function() {
   sliderSpan.on('touchmove vmousemove', function(event){
     if (clicked === true && event.type === "vmousemove") {
       var percent = (event.clientX - sliderSpan[0].offsetLeft)/sliderSpan[0].clientWidth;
-      slider.setValue(percent*100);
+      slider.setValue(Math.floor(percent*100));
       RGBChange();
     }
   })
