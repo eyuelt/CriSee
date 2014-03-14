@@ -50,6 +50,13 @@ $(document).ready(function() {
   });
 
 
+  /** Set value of slider when submit button is clicked **/
+  //This is necessary due to some bug on mobile that I can't figure out
+  $('#submitBtn').click(function(e) {
+      $('#R')[0].value = r.getValue();
+  });
+
+
   /** Disable selection of sliderbar **/
   $(document).ready(function(){
     $('.notSelectable').disableSelection();
