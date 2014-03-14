@@ -57,6 +57,18 @@
 
         <a href="/addevent" class="btn btn-primary btn-lg btn-block" role="button">Add Event</a>
 
+        <h4>Upcoming Events</h4>
+        <table>
+        {{#each upcoming_events}}
+          <tr><td class>
+              <a href="/editevent?id={{_id}}" class="btn btn-default btn-lg btn-block active" id="event"> <b>{{description}}</b> <span style="color:grey;">{{deadline}}</span> </a>
+            <!-- <td class="listview-elem">
+              <a href="/editevent?id={{_id}}">{{description}} </a> -->
+          </td></tr>
+        {{/each}}
+        </table>
+
+        <h4>All Events</h4>
         <table>
         {{#each events}}
           <tr><td class>

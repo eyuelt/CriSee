@@ -23,16 +23,28 @@ exports.listview = function(req, res) {
     models.Event.find({ 'user_id': req.cookies.user_id }).sort('deadline').exec(function(err, events) {
       if (err) { console.log(err); res.send(500); }
       var e = [];
+      var upcoming = [];
+      var today = todaysDate();
       for (var i = 0; i < events.length; i++) {
         e[i] = {};
         e[i]._id = events[i]._id;
         e[i].description = events[i].description;
         e[i].deadline = new Date(events[i].deadline).toDateString();
-        console.log(e[i])
+        if (new Date(e[i].deadline) >= today) upcoming.push(e[i]);
       }
       var options = {};
       options.events = e;
+      options.upcoming_events = upcoming;
       res.render('listview', options);
     });
   }
+};
+
+function todaysDate() {
+  var today = new Date();
+  today.setHours(0);
+  today.setMinutes(0);
+  today.setSeconds(0);
+  today.setMilliseconds(0);
+  return today;
 };
