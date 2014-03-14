@@ -59,6 +59,7 @@ app.get('/events', events.getEvents);
 app.get('/colors', colors.getColors);
 app.get('/delete', events.deleteevent);
 app.get('/sms', sms.sendText);
+app.get('/notifyall', sms.notifyAll);
 // not yet implemented
 //app.get('/search', );
 
