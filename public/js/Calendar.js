@@ -127,7 +127,8 @@ function createListOfEventsForDay(datestr) {
   clearContentsOfContainer(table);
   $.get("/events?date="+datestr, handleResults);
   function handleResults(result) {
-    //console.log('Events for ' + result.date + ':\n' + JSON.stringify(result.events));
+    var hdr = $('#events-header')[0];
+    hdr.innerHTML = 'Events for ' + result.date;
     if (result.events.length === 0) {
       var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
       cell.className = "event";
