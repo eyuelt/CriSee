@@ -13,3 +13,7 @@ body {
 #signUpBtn {
   width:30%;
 }
+
+.container {
+  margin-bottom: 20px;
+}
