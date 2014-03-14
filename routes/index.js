@@ -20,7 +20,7 @@ exports.listview = function(req, res) {
   if (!req.cookies.user_id) {
     res.redirect('/signin');
   } else {
-    models.Event.find({ 'user_id': req.cookies.user_id }).sort('-deadline').exec(function(err, events) {
+    models.Event.find({ 'user_id': req.cookies.user_id }).sort('deadline').exec(function(err, events) {
       if (err) { console.log(err); res.send(500); }
       var e = [];
       for (var i = 0; i < events.length; i++) {
