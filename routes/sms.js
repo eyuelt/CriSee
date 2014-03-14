@@ -47,8 +47,14 @@ exports.notifyAll = function(req, res) {
 
 var tips = require('../tips.json');
 function getMessageOfType(type) {
-  console.log(tips.healthtips[type]);
-  return 'test tip';
+  var prettytype = '';
+  if (type === 'food') prettytype = 'Eating';
+  if (type === 'sleep') prettytype = 'Sleep';
+  if (type === 'exercise') prettytype = 'Exercise';
+
+  var tipsForType = tips.healthtips[type];
+  var randIndex = Math.floor(Math.random() * tipsForType.length);
+  return '[' + prettytype + ' tip] ' + tipsForType[randIndex];
 };
 
 //Send a text to the user with the given user_id
