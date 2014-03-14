@@ -7,7 +7,7 @@
 */
 
 var mongoose = require('mongoose');
-var models   = require('./models');
+var models = require('../models');
 
 // Connect to the Mongo database, whether locally or on Heroku
 var local_database_name = 'CriSee';
