@@ -130,8 +130,10 @@ function createListOfEventsForDay(datestr) {
     //console.log('Events for ' + result.date + ':\n' + JSON.stringify(result.events));
     if (result.events.length === 0) {
       var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td"));
-      cell.className = "listview-elem";
-      cell.appendChild(document.createTextNode("No events listed for " + datestr));
+      cell.className = "event";
+      var span = cell.appendChild(document.createElement("span"));
+      span.className = "noevents";
+      span.appendChild(document.createTextNode("No events listed for " + datestr));
     } else {
       for (var i = 0; i < result.events.length; i++) {
         addEventToTable(result.events[i]);
@@ -139,20 +141,31 @@ function createListOfEventsForDay(datestr) {
     }
   };
   function addEventToTable(event) {
+    /*
     var cell = table.appendChild(document.createElement("tr")).appendChild(document.createElement("td")).appendChild(document.createElement("a"));
     cell.href = "/editevent?id="+event._id;
     cell.className = "btn btn-default btn-lg btn-block active";
     cell.id = "event";
     var text = document.createTextNode(event.description);
     cell.appendChild(text);
-    // var element = document.createElement("td");
-    // element.className = "listview-elem";
-    // var cell = document.createElement("a");
-    // cell.href = "/editevent";
-    // var text = document.createTextNode(event.description);
-    // cell.appendChild(text);
-    // element.appendChild(cell);
-    // row.appendChild(element);
+    */
+
+    var row = table.appendChild(document.createElement("tr"));
+    var element = document.createElement("td");
+    element.className = "listview-elem event";
+    var cell = document.createElement("a");
+    cell.href = "/editevent?id="+event._id;
+    //var text = document.createTextNode(event.description);
+    var title = document.createElement("span");
+    title.className = "title";
+    title.appendChild(document.createTextNode(event.description));
+    var date = document.createElement("span");
+    date.className = "date";
+    date.appendChild(document.createTextNode(new Date(event.deadline).toDateString()));
+    cell.appendChild(title);
+    cell.appendChild(date);
+    element.appendChild(cell);
+    row.appendChild(element);
   };
 }
 

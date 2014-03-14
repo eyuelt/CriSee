@@ -16,7 +16,7 @@ h4 {
 }
 
 .listview-elem {
-  padding: 10px;
+  background-color: #ddd;
 }
 
 #more-btn {
@@ -45,9 +45,23 @@ button {
   text-align: right;
 }
 
-#event {
-  margin: 0px;
-  border-radius: 0px;
-  text-align: left;
-  padding-left: 10px;
+.event a {
+  padding: 10px;
+  display: block;
+}
+.event a:link {
+  text-decoration: none;
+}
+
+.event .title {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+}
+
+.event .date {
+  color: gray;
+  font-size: 12px;
+  display: block;
 }
