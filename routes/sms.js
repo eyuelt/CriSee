@@ -1,9 +1,6 @@
 var exec = require('child_process').exec;
 
 exports.sendText = function(req, res) {
-  if (!req.cookies.user_id) {
-    res.redirect('/signin');
-  } else {
     var number = req.query.number;
     var message = req.query.message;
 
@@ -17,5 +14,4 @@ exports.sendText = function(req, res) {
     exec(command);
 
     res.send(200);
-  }
 };
