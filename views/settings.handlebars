@@ -102,6 +102,18 @@
         });
       </script>
 
+      <script>
+        var phoneBox = $('#inputPhone')[0];
+        phoneBox.onfocus = function() {
+          var bottombar = $('nav.navbar-fixed-bottom');
+          bottombar.hide();
+        };
+        phoneBox.onblur = function() {
+          var bottombar = $('nav.navbar-fixed-bottom');
+          bottombar.show();
+        };
+      </script>
+
       </div>
       <button type="submit" class="btn btn-primary btn-lg btn-block">Save Settings</button>
       <a href="/signout" id="signout" class="btn btn-danger" role="button">Sign out</a>
